@@ -1,32 +1,17 @@
-//
-//  VaquitaApp.swift
-//  Vaquita
-//
-//  Created by Armando Meabe on 23/03/2026.
-//
-
 import SwiftUI
 import SwiftData
 
 @main
 struct VaquitaApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    // Ya no necesitamos la variable sharedModelContainer acá
+    // porque le pasamos el modelo directamente al modificador abajo.
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        // Esta línea es la que hace toda la magia por vos:
+        // Crea el archivo SQL, mapea la clase Participante y prepara el Context.
+        .modelContainer(for: Participante.self)
     }
 }
