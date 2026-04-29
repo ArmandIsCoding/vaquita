@@ -14,7 +14,7 @@ struct AgregarParticipanteView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("Datos del Pibe")) {
+                Section(header: Text("Datos del Invitado")) {
                     TextField("Nombre", text: $nombre)
                         .autocorrectionDisabled()
                     
@@ -32,7 +32,7 @@ struct AgregarParticipanteView: View {
                     }
                 }
             }
-            .navigationTitle(participanteAEditar == nil ? "Nuevo Pibe" : "Editar Pibe")
+            .navigationTitle(participanteAEditar == nil ? "Nuevo Invitado" : "Editar Invitado")
             .onAppear {
                 if let p = participanteAEditar {
                     nombre = p.nombre

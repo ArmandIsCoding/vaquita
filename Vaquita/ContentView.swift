@@ -19,19 +19,19 @@ struct ContentView: View {
         NavigationStack {
             List {
                 // --- SECCIÓN: LISTADO ---
-                Section(header: Text("Pibes del Asado")) {
-                    ForEach(participantes) { pibe in
+                Section(header: Text("Invitados")) {
+                    ForEach(participantes) { invitado in
                         Button {
-                            participanteAEditar = pibe
+                            participanteAEditar = invitado
                         } label: {
                             HStack {
-                                Text(pibe.nombre)
+                                Text(invitado.nombre)
                                     .font(.headline)
                                     .foregroundStyle(.primary)
                                 Spacer()
                                 // Formato dinámico según el país del usuario
-                                Text(pibe.montoPagado, format: currencyFormat)
-                                    .foregroundStyle(pibe.montoPagado > 0 ? .green : .secondary)
+                                Text(invitado.montoPagado, format: currencyFormat)
+                                    .foregroundStyle(invitado.montoPagado > 0 ? .green : .secondary)
                                     .monospacedDigit() // Evita que los números "salten" al cambiar
                             }
                         }
@@ -60,7 +60,7 @@ struct ContentView: View {
                     
                     Section(header: Text("Resumen General")) {
                         let total = participantes.reduce(0) { $0 + $1.montoPagado }
-                        let porPibe = total / Double(max(1, participantes.count))
+                        let porInvitado = total / Double(max(1, participantes.count))
                         
                         HStack {
                             Text("Total Gastado:")
@@ -68,9 +68,9 @@ struct ContentView: View {
                             Text(total, format: currencyFormat)
                         }
                         HStack {
-                            Text("Costo por Pibe:")
+                            Text("Costo por Invitado:")
                             Spacer()
-                            Text(porPibe, format: currencyFormat)
+                            Text(porInvitado, format: currencyFormat)
                                 .foregroundStyle(.blue)
                                 .bold()
                         }
@@ -80,7 +80,7 @@ struct ContentView: View {
             .navigationTitle("Vaquita")
             .overlay {
                 if participantes.isEmpty {
-                    ContentUnavailableView("No hay nadie", systemImage: "person.3.fill", description: Text("Agregá a los pibes para empezar el asado."))
+                    ContentUnavailableView("No hay nadie", systemImage: "person.3.fill", description: Text("Agregá a los invitados para empezar el asado."))
                 }
             }
             .toolbar {
@@ -126,8 +126,8 @@ struct ContentView: View {
             .sheet(isPresented: $mostrandoAgregar) {
                 AgregarParticipanteView()
             }
-            .sheet(item: $participanteAEditar) { pibe in
-                AgregarParticipanteView(participanteAEditar: pibe)
+            .sheet(item: $participanteAEditar) { invitado in
+                AgregarParticipanteView(participanteAEditar: invitado)
             }
         }
     }

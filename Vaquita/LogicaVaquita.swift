@@ -35,11 +35,11 @@ struct CalculadoraVaquita {
 
     static func generarMensajeWhatsApp(participantes: [Participante], transacciones: [Transaccion]) -> String {
         let total = participantes.reduce(0) { $0 + $1.montoPagado }
-        let porPibe = total / Double(max(1, participantes.count))
+        let porInvitado = total / Double(max(1, participantes.count))
         
         var mensaje = "🥩 *Vaquita: Resumen del Asado* 🥩\n\n"
         mensaje += "💰 Total gastado: $\(String(format: "%.0f", total))\n"
-        mensaje += "👤 Por pibe: $\(String(format: "%.0f", porPibe))\n\n"
+        mensaje += "👤 Por invitado: $\(String(format: "%.0f", porInvitado))\n\n"
         mensaje += "📝 *Liquidación:* \n"
         
         if transacciones.isEmpty {
