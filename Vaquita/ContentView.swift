@@ -9,16 +9,19 @@ struct ContentView: View {
     @State private var participanteAEditar: Participante?
     @State private var mostrandoConfirmacionLimpiar = false
 
-    // Formateador automático que detecta la moneda del iPhone del usuario
+    // Propiedad computada para evitar cálculos redundantes en el body
+    private var transacciones: [Transaccion] {
+        CalculadoraVaquita.calcularLiquidacion(participantes: participantes)
+    }
+
     private var currencyFormat: FloatingPointFormatStyle<Double>.Currency {
         .currency(code: Locale.current.currency?.identifier ?? "USD")
-        .precision(.fractionLength(0)) // En asados no usamos centavos
+        .precision(.fractionLength(0))
     }
 
     var body: some View {
         NavigationStack {
             List {
-                // --- SECCIÓN: LISTADO ---
                 Section(header: Text("Invitados")) {
                     ForEach(participantes) { invitado in
                         Button {
@@ -29,18 +32,14 @@ struct ContentView: View {
                                     .font(.headline)
                                     .foregroundStyle(.primary)
                                 Spacer()
-                                // Formato dinámico según el país del usuario
                                 Text(invitado.montoPagado, format: currencyFormat)
                                     .foregroundStyle(invitado.montoPagado > 0 ? .green : .secondary)
-                                    .monospacedDigit() // Evita que los números "salten" al cambiar
+                                    .monospacedDigit()
                             }
                         }
                     }
                     .onDelete(perform: eliminarParticipante)
                 }
-                
-                // --- SECCIÓN: RESULTADOS ---
-                let transacciones = CalculadoraVaquita.calcularLiquidacion(participantes: participantes)
                 
                 if !participantes.isEmpty {
                     if !transacciones.isEmpty {
@@ -98,7 +97,6 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 20) {
                         if !participantes.isEmpty {
-                            let transacciones = CalculadoraVaquita.calcularLiquidacion(participantes: participantes)
                             let mensaje = CalculadoraVaquita.generarMensajeWhatsApp(participantes: participantes, transacciones: transacciones)
                             
                             ShareLink(item: mensaje) {

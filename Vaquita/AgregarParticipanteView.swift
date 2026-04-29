@@ -8,8 +8,14 @@ struct AgregarParticipanteView: View {
     var participanteAEditar: Participante?
     
     @State private var nombre: String = ""
-    // Usamos String para el input para evitar que el Formatter nativo se vuelva loco
     @State private var montoTexto: String = ""
+    
+    // Símbolo de moneda dinámico corregido
+    private var currencySymbol: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter.currencySymbol ?? "$"
+    }
     
     var body: some View {
         NavigationStack {
@@ -19,11 +25,10 @@ struct AgregarParticipanteView: View {
                         .autocorrectionDisabled()
                     
                     HStack {
-                        Text("$") // El símbolo fijo para que no moleste al escribir
+                        Text(currencySymbol)
                         TextField("0", text: $montoTexto)
-                            .keyboardType(.numberPad) // Solo números
+                            .keyboardType(.numberPad)
                             .onChange(of: montoTexto) { oldValue, newValue in
-                                // Solo permitimos números
                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                 if filtered != newValue {
                                     montoTexto = filtered
@@ -36,7 +41,6 @@ struct AgregarParticipanteView: View {
             .onAppear {
                 if let p = participanteAEditar {
                     nombre = p.nombre
-                    // Convertimos el Double a String sin decimales para editar
                     montoTexto = String(format: "%.0f", p.montoPagado)
                 }
             }
@@ -53,9 +57,7 @@ struct AgregarParticipanteView: View {
                             modelContext.insert(nuevo)
                         }
                         
-                        // IMPORTANTE: Forzamos el guardado en SwiftData
                         try? modelContext.save()
-                        
                         dismiss()
                     }
                     .disabled(nombre.isEmpty)

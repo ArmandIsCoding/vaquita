@@ -37,16 +37,21 @@ struct CalculadoraVaquita {
         let total = participantes.reduce(0) { $0 + $1.montoPagado }
         let porInvitado = total / Double(max(1, participantes.count))
         
+        // Obtenemos el símbolo de moneda local usando NumberFormatter para evitar el error de compilación
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        let simboloMoneda = formatter.currencySymbol ?? "$"
+        
         var mensaje = "🥩 *Vaquita: Resumen del Asado* 🥩\n\n"
-        mensaje += "💰 Total gastado: $\(String(format: "%.0f", total))\n"
-        mensaje += "👤 Por invitado: $\(String(format: "%.0f", porInvitado))\n\n"
+        mensaje += "💰 Total gastado: \(simboloMoneda)\(String(format: "%.0f", total))\n"
+        mensaje += "👤 Por invitado: \(simboloMoneda)\(String(format: "%.0f", porInvitado))\n\n"
         mensaje += "📝 *Liquidación:* \n"
         
         if transacciones.isEmpty {
             mensaje += "✅ ¡Están todos al día!"
         } else {
             for t in transacciones {
-                mensaje += "• *\(t.de)* le paga $\(String(format: "%.0f", t.monto)) a *\(t.a)*\n"
+                mensaje += "• *\(t.de)* le paga \(simboloMoneda)\(String(format: "%.0f", t.monto)) a *\(t.a)*\n"
             }
         }
         
