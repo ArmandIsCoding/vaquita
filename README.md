@@ -1,42 +1,43 @@
-# 🐮 Vaquita - Liquidación Inteligente de Gastos (iOS)
+# 🐮 Vaquita: Liquidación Inteligente de Gastos
 
-**Vaquita** es una aplicación nativa para iOS diseñada para resolver el clásico problema de "quién le debe a quién" después de un asado, un viaje o una salida entre amigos. 
+> **"La complejidad de una deuda no reside en el monto, sino en la ineficiencia de su resolución."**
 
-Desarrollada íntegramente en **Swift 6** y **SwiftUI**, utiliza un motor de cálculo basado en teoría de grafos para minimizar la cantidad de transferencias necesarias.
+**Vaquita** es un experimento de ingeniería para iOS diseñado para optimizar el flujo de dinero tras eventos sociales (asados, viajes o salidas). El objetivo es simple: convertir un caos de deudas cruzadas en la mínima cantidad de transacciones posibles.
 
----
-
-## 🧠 El Motor de Cálculo: Optimización de Flujo
-A diferencia de otras aplicaciones que generan múltiples deudas cruzadas, **Vaquita** implementa un algoritmo de **Liquidación por Flujo Neto**:
-
-1. **Cálculo de Balance:** Determinamos el gasto individual vs. el promedio del grupo.
-2. **Clasificación de Nodos:** Separamos a los participantes en *Deudores* y *Acreedores*.
-3. **Resolución Greedy:** El sistema empareja recursivamente al mayor deudor con el mayor acreedor.
-4. **Resultado:** Se obtiene el **camino más corto** para saldar las deudas, evitando el "pasamanos" de dinero innecesario.
+Este proyecto marca mi transición personal hacia el desarrollo nativo con **Swift 6**, aplicando patrones de arquitectura que he perfeccionado durante años en .NET a la plataforma de Apple.
 
 ---
 
-## 🛠️ Stack Tecnológico & Arquitectura
-- **UI Framework:** SwiftUI (Declarativa y Reactiva).
-- **Persistencia:** **SwiftData** (Core Data moderno) para almacenamiento local y persistencia de sesiones.
-- **Formateo:** Localización dinámica de moneda (`Locale.current`) para soporte multi-región.
-- **Sharing:** Integración nativa con `ShareLink` para enviar resúmenes por WhatsApp/iMessage.
-- **Target:** Optimizado para iOS 17.0+ y procesadores Apple Silicon (M1/M2/M3/M4).
+### 🧠 Ingeniería del Algoritmo: Teoría de Grafos
+A diferencia de las soluciones lineales, Vaquita trata al grupo como un grafo dirigido donde el objetivo es la simplificación de aristas. Implementé un motor de **Liquidación por Flujo Neto**:
+
+1.  **Cálculo de Balance:** Determinación del gasto individual frente al promedio.
+2.  **Clasificación de Nodos:** Segmentación entre *Deudores* y *Acreedores*.
+3.  **Resolución Greedy (Codiciosa):** El sistema empareja recursivamente al mayor deudor con el mayor acreedor hasta que el balance de todos los nodos sea cero.
+4.  **Optimización de Camino:** El resultado es el **camino más corto** para saldar deudas, eliminando el "pasamanos" innecesario de dinero.
 
 ---
 
-## 📱 Vista Previa
-*(Aquí podés insertar una captura de pantalla de la app corriendo en tu iPhone 17 Pro más adelante)*
+### 🛠️ Stack Tecnológico & Arquitectura
+* **Lenguaje:** Swift 6 (aprovechando la seguridad de tipos y concurrencia moderna).
+* **UI:** **SwiftUI** con un enfoque puramente declarativo.
+* **Persistencia:** **SwiftData**, utilizando modelos vinculados para una gestión de memoria eficiente.
+* **Hardware:** Optimizado para el ecosistema de Apple (iOS 17+), testeado específicamente en **iPhone 17 Pro**.
+* **UX:** Integración nativa con `ShareLink` para la exportación de resultados vía WhatsApp o iMessage.
 
 ---
 
-## 👨‍💻 Sobre el Autor
-**Armando Meabe** Desarrollador de Software con más de 18 años de experiencia en el ecosistema **.NET (C#/C++)**. Este proyecto representa mi incursión en el desarrollo nativo de Apple, aplicando principios de ingeniería de software a las nuevas tecnologías de Swift.
+### 🚀 El Camino del Desarrollador (Blog Insight)
+Como arquitecto de software con 18 años en el ecosistema Microsoft, migrar a Swift me obligó a repensar la reactividad de la interfaz. Vaquita no es solo una utilidad; es el cuaderno de bitácora de mi aprendizaje sobre cómo Apple maneja la memoria y el ciclo de vida de las aplicaciones.
 
 ---
 
-## 📝 Licencia
-Este proyecto es de código abierto bajo la licencia [MIT](LICENSE). Siéntete libre de usar el código para aprender o mejorar tus propios algoritmos de liquidación.
+### 📬 Conectemos
+Este proyecto es parte de mi ecosistema de experimentación técnica. Podés leer más sobre mis otros desarrollos en:
+🌐 **[helloworld.com.ar](https://helloworld.com.ar)**
 
 ---
-*Generado con ❤️ desde Santa Fe, Argentina.*
+
+### 📝 Licencia
+Distribuido bajo la licencia [MIT](LICENSE). 
+*Documentado con rebeldía frente al olvido desde Santa Fe, Argentina.*
