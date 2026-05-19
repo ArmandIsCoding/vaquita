@@ -6,6 +6,8 @@
 
 Este proyecto marca mi transición personal hacia el desarrollo nativo con **Swift 6**, aplicando patrones de arquitectura que he perfeccionado durante años en .NET a la plataforma de Apple.
 
+![Alt Text](Capturas/6.7/Simulator%20Screenshot%20-%20iPhone%2017%20Pro%20Max%20-%202026-05-05%20at%2001.10.35.png)
+
 ---
 
 ### 🧠 Ingeniería del Algoritmo: Teoría de Grafos
