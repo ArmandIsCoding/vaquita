@@ -1,4 +1,4 @@
-using System.Globalization;
+using Vaquita.Converters;
 using Vaquita.Models;
 using Vaquita.Pages;
 using Vaquita.Services;
@@ -10,7 +10,15 @@ public partial class MainPage : ContentPage
     private readonly ParticipanteRepository _repository = new();
     private List<Participante> _participantes = [];
 
-    public MainPage() => InitializeComponent();
+    public IReadOnlyList<Participante> Participantes { get; private set; } = [];
+
+    public IReadOnlyList<Transaccion> Transacciones { get; private set; } = [];
+
+    public MainPage()
+    {
+        InitializeComponent();
+        BindingContext = this;
+    }
 
     protected override async void OnAppearing()
     {
@@ -28,34 +36,31 @@ public partial class MainPage : ContentPage
 
     private void ActualizarVista()
     {
-        var transacciones = CalculadoraVaquita.CalcularLiquidacion(_participantes);
-        ParticipantesView.ItemsSource = _participantes;
-        TransaccionesView.ItemsSource = transacciones;
+        Participantes = _participantes;
+        Transacciones = CalculadoraVaquita.CalcularLiquidacion(_participantes);
+        OnPropertyChanged(nameof(Participantes));
+        OnPropertyChanged(nameof(Transacciones));
 
         var tieneParticipantes = _participantes.Count > 0;
         EmptyState.IsVisible = !tieneParticipantes;
         Contenido.IsVisible = tieneParticipantes;
-        LimpiarToolbarItem.IsEnabled = tieneParticipantes;
-        CompartirToolbarItem.IsEnabled = tieneParticipantes;
-        LiquidacionSection.IsVisible = transacciones.Count > 0;
+        LimpiarContainer.IsVisible = tieneParticipantes;
+        CompartirButton.IsVisible = tieneParticipantes;
+        ToolbarSeparator.IsVisible = tieneParticipantes;
+        LiquidacionSection.IsVisible = Transacciones.Count > 0;
 
         var total = _participantes.Sum(participante => participante.MontoPagado);
         var porInvitado = tieneParticipantes ? total / _participantes.Count : 0;
-        TotalLabel.Text = total.ToString("C0", CultureInfo.CurrentCulture);
-        PorInvitadoLabel.Text = porInvitado.ToString("C0", CultureInfo.CurrentCulture);
+        TotalLabel.Text = MonedaConverter.Formatear(total);
+        PorInvitadoLabel.Text = MonedaConverter.Formatear(porInvitado);
     }
 
     private async void OnAgregarClicked(object? sender, EventArgs e) => await AbrirEditorAsync(null);
 
-    private async void OnParticipanteSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    private async void OnParticipanteTapped(object? sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is not Participante participante)
-        {
-            return;
-        }
-
-        ParticipantesView.SelectedItem = null;
-        await AbrirEditorAsync(participante);
+        if (e.Parameter is Participante participante)
+            await AbrirEditorAsync(participante);
     }
 
     private async Task AbrirEditorAsync(Participante? participante) =>
@@ -74,10 +79,15 @@ public partial class MainPage : ContentPage
         ActualizarVista();
     }
 
-    private async void OnEliminarClicked(object? sender, EventArgs e)
+    private async void OnEliminarSwipeInvoked(object? sender, EventArgs e)
     {
-        if ((sender as Button)?.CommandParameter is not Participante participante ||
-            !await DisplayAlertAsync("¿Eliminar invitado?", $"Se eliminará a {participante.Nombre}.", "Eliminar", "Cancelar"))
+        if ((sender as SwipeItem)?.CommandParameter is Participante participante)
+            await EliminarAsync(participante);
+    }
+
+    private async Task EliminarAsync(Participante participante)
+    {
+        if (!await DisplayAlertAsync("¿Eliminar invitado?", $"Se eliminará a {participante.Nombre}.", "Eliminar", "Cancelar"))
             return;
 
         _participantes.RemoveAll(actual => actual.Id == participante.Id);
@@ -97,7 +107,7 @@ public partial class MainPage : ContentPage
 
     private async void OnCompartirClicked(object? sender, EventArgs e)
     {
-        var mensaje = CalculadoraVaquita.GenerarMensajeWhatsApp(_participantes, CalculadoraVaquita.CalcularLiquidacion(_participantes));
+        var mensaje = CalculadoraVaquita.GenerarMensajeWhatsApp(_participantes, Transacciones);
         await Share.Default.RequestAsync(new ShareTextRequest { Text = mensaje, Title = "Vaquita: resumen del asado" });
     }
 }

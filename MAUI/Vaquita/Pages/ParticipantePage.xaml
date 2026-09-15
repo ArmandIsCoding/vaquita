@@ -1,20 +1,101 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Vaquita.Pages.ParticipantePage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancelar" Clicked="OnCancelarClicked" />
-        <ToolbarItem Text="Guardar" Clicked="OnGuardarClicked" />
-    </ContentPage.ToolbarItems>
+             x:Class="Vaquita.Pages.ParticipantePage"
+             NavigationPage.HasNavigationBar="False"
+             SafeAreaEdges="Container"
+             BackgroundColor="#F2F2F7">
 
-    <VerticalStackLayout Padding="20" Spacing="16">
-        <Label Text="Datos del invitado" Style="{StaticResource Headline}" />
-        <Label Text="Nombre" />
-        <Entry x:Name="NombreEntry" Placeholder="Nombre" ReturnType="Next" />
-        <Label Text="Monto pagado" />
-        <Entry x:Name="MontoEntry" Placeholder="0" Keyboard="Numeric" />
-        <Label Text="Ingresá sólo el importe que pagó esta persona. La app calcula el reparto automáticamente."
-               FontSize="12"
-               TextColor="{StaticResource Gray600}" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="60,*">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="100,*,100"
+              Padding="8,0"
+              BackgroundColor="#F2F2F7">
+            <Label Text="Cancelar"
+                   FontSize="17"
+                   TextColor="#007AFF"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCancelarClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="TituloLabel"
+                   Grid.Column="1"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="17"
+                   TextColor="#000000"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="GuardarLabel"
+                   Grid.Column="2"
+                   Text="Guardar"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="17"
+                   TextColor="#007AFF"
+                   Opacity="0.35"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnGuardarClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,26,18,30" Spacing="8">
+                <Label Text="DATOS DEL INVITADO"
+                       Margin="16,0,0,0"
+                       FontSize="13"
+                       TextColor="#6D6D72" />
+
+                <Border StrokeThickness="0"
+                        BackgroundColor="#FFFFFF"
+                        Padding="16,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="54,1,54">
+                        <Entry x:Name="NombreEntry"
+                               Grid.ColumnSpan="2"
+                               Placeholder="Nombre"
+                               ReturnType="Next"
+                               FontSize="17"
+                               TextColor="#000000"
+                               PlaceholderColor="#8E8E93"
+                               BackgroundColor="Transparent"
+                               ClearButtonVisibility="WhileEditing"
+                               TextChanged="OnNombreTextChanged" />
+
+                        <BoxView Grid.Row="1"
+                                 Grid.ColumnSpan="2"
+                                 BackgroundColor="#E5E5EA" />
+
+                        <Label Grid.Row="2"
+                               Text="$"
+                               FontSize="17"
+                               TextColor="#000000"
+                               VerticalTextAlignment="Center" />
+                        <Entry x:Name="MontoEntry"
+                               Grid.Row="2"
+                               Grid.Column="1"
+                               Margin="12,0,0,0"
+                               Placeholder="0"
+                               Keyboard="Numeric"
+                               ReturnType="Done"
+                               FontSize="17"
+                               TextColor="#000000"
+                               PlaceholderColor="#8E8E93"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Border>
+
+                <Label Text="Ingresá el importe que pagó esta persona. Vaquita calcula el reparto automáticamente."
+                       Margin="16,0"
+                       FontSize="13"
+                       LineHeight="1.15"
+                       TextColor="#6D6D72" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

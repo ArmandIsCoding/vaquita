@@ -9,6 +9,17 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.ConfigureMauiHandlers(handlers =>
+			{
+#if IOS
+				Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("VaquitaBorderlessEntry", (handler, _) =>
+				{
+					handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+					handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+					handler.PlatformView.Layer.BorderWidth = 0;
+				});
+#endif
+			})
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
