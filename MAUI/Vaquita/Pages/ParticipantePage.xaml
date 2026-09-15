@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vaquita.Pages.ParticipantePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancelar" Clicked="OnCancelarClicked" />
+        <ToolbarItem Text="Guardar" Clicked="OnGuardarClicked" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Padding="20" Spacing="16">
+        <Label Text="Datos del invitado" Style="{StaticResource Headline}" />
+        <Label Text="Nombre" />
+        <Entry x:Name="NombreEntry" Placeholder="Nombre" ReturnType="Next" />
+        <Label Text="Monto pagado" />
+        <Entry x:Name="MontoEntry" Placeholder="0" Keyboard="Numeric" />
+        <Label Text="Ingresá sólo el importe que pagó esta persona. La app calcula el reparto automáticamente."
+               FontSize="12"
+               TextColor="{StaticResource Gray600}" />
+    </VerticalStackLayout>
+</ContentPage>
