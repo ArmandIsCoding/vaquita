@@ -6,14 +6,22 @@ namespace Vaquita.Pages;
 public partial class ParticipantePage : ContentPage
 {
     private readonly Participante? _original;
+    private readonly IReadOnlyList<string> _nombresConocidos;
     private readonly Func<Participante, Task> _onGuardar;
 
-    public ParticipantePage(Participante? participante, Func<Participante, Task> onGuardar)
+    public IReadOnlyList<string> NombresSugeridos { get; private set; } = [];
+
+    public ParticipantePage(
+        Participante? participante,
+        IReadOnlyList<string> nombresConocidos,
+        Func<Participante, Task> onGuardar)
     {
         InitializeComponent();
         _original = participante;
+        _nombresConocidos = nombresConocidos;
         _onGuardar = onGuardar;
-        Title = participante is null ? "Nuevo invitado" : "Editar invitado";
+        BindingContext = this;
+        Title = participante is null ? "Nuevo participante" : "Editar participante";
         TituloLabel.Text = Title;
 
         if (participante is not null)
@@ -26,6 +34,48 @@ public partial class ParticipantePage : ContentPage
     private void OnNombreTextChanged(object? sender, TextChangedEventArgs e)
     {
         GuardarLabel.Opacity = string.IsNullOrWhiteSpace(e.NewTextValue) ? 0.35 : 1;
+        var busqueda = e.NewTextValue?.Trim() ?? string.Empty;
+        if (busqueda.Length == 0)
+        {
+            OcultarSugerencias();
+            return;
+        }
+
+        MostrarSugerencias(_nombresConocidos
+            .Where(nombre => nombre.StartsWith(busqueda, StringComparison.CurrentCultureIgnoreCase)));
+    }
+
+    private void OnMostrarNombresClicked(object? sender, EventArgs e)
+    {
+        if (SugerenciasContainer.IsVisible)
+            OcultarSugerencias();
+        else
+            MostrarSugerencias(_nombresConocidos);
+    }
+
+    private void OnSugerenciaTapped(object? sender, TappedEventArgs e)
+    {
+        if (e.Parameter is not string nombre)
+            return;
+
+        NombreEntry.Text = nombre;
+        NombreEntry.CursorPosition = nombre.Length;
+        OcultarSugerencias();
+        MontoEntry.Focus();
+    }
+
+    private void MostrarSugerencias(IEnumerable<string> nombres)
+    {
+        NombresSugeridos = nombres.ToList();
+        OnPropertyChanged(nameof(NombresSugeridos));
+        SugerenciasContainer.IsVisible = NombresSugeridos.Count > 0;
+    }
+
+    private void OcultarSugerencias()
+    {
+        NombresSugeridos = [];
+        OnPropertyChanged(nameof(NombresSugeridos));
+        SugerenciasContainer.IsVisible = false;
     }
 
     private async void OnGuardarClicked(object? sender, EventArgs e)

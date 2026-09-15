@@ -42,18 +42,19 @@ public static class CalculadoraVaquita
         return transacciones;
     }
 
-    public static string GenerarMensajeWhatsApp(IEnumerable<Participante> participantes, IEnumerable<Transaccion> transacciones)
+    public static string GenerarMensajeWhatsApp(string nombreVaquita, IEnumerable<Participante> participantes, IEnumerable<Transaccion> transacciones)
     {
         var lista = participantes.ToList();
         var total = lista.Sum(participante => participante.MontoPagado);
-        var porInvitado = lista.Count == 0 ? 0 : total / lista.Count;
-        var cultura = CultureInfo.CurrentCulture;
+        var porParticipante = lista.Count == 0 ? 0 : total / lista.Count;
+        var cultura = CultureInfo.GetCultureInfo("es-AR");
         var moneda = cultura.NumberFormat.CurrencySymbol;
         var mensaje = new StringBuilder()
-            .AppendLine("🥩 *Vaquita: Resumen del Asado* 🥩")
+            .AppendLine($"🐮 *{nombreVaquita}*")
+            .AppendLine("Resumen de gastos")
             .AppendLine()
             .AppendLine($"💰 Total gastado: {moneda}{total:N0}")
-            .AppendLine($"👤 Por invitado: {moneda}{porInvitado:N0}")
+            .AppendLine($"👤 Por participante: {moneda}{porParticipante:N0}")
             .AppendLine()
             .AppendLine("📝 *Liquidación:*");
 
@@ -70,7 +71,7 @@ public static class CalculadoraVaquita
             }
         }
 
-        return mensaje.AppendLine().Append("_Generado por Vaquita App_ 🐮").ToString();
+        return mensaje.AppendLine().Append("_Generado por Vaquita_ 🐮").ToString();
     }
 
     private sealed class Balance(string nombre, decimal monto)

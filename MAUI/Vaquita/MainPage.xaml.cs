@@ -1,4 +1,3 @@
-using Vaquita.Converters;
 using Vaquita.Models;
 using Vaquita.Pages;
 using Vaquita.Services;
@@ -7,12 +6,9 @@ namespace Vaquita;
 
 public partial class MainPage : ContentPage
 {
-    private readonly ParticipanteRepository _repository = new();
-    private List<Participante> _participantes = [];
+    private readonly VaquitaRepository _repository = new();
 
-    public IReadOnlyList<Participante> Participantes { get; private set; } = [];
-
-    public IReadOnlyList<Transaccion> Transacciones { get; private set; } = [];
+    public IReadOnlyList<VaquitaEvento> Vaquitas { get; private set; } = [];
 
     public MainPage()
     {
@@ -28,86 +24,43 @@ public partial class MainPage : ContentPage
 
     private async Task CargarAsync()
     {
-        _participantes = (await _repository.ObtenerTodosAsync())
-            .OrderBy(participante => participante.Nombre, StringComparer.CurrentCultureIgnoreCase)
+        Vaquitas = (await _repository.ObtenerTodasAsync())
+            .OrderByDescending(vaquita => vaquita.Fecha)
+            .ThenByDescending(vaquita => vaquita.UltimaModificacion)
             .ToList();
-        ActualizarVista();
+        OnPropertyChanged(nameof(Vaquitas));
+
+        EmptyState.IsVisible = Vaquitas.Count == 0;
+        Contenido.IsVisible = Vaquitas.Count > 0;
     }
 
-    private void ActualizarVista()
+    private async void OnNuevaVaquitaClicked(object? sender, EventArgs e)
     {
-        Participantes = _participantes;
-        Transacciones = CalculadoraVaquita.CalcularLiquidacion(_participantes);
-        OnPropertyChanged(nameof(Participantes));
-        OnPropertyChanged(nameof(Transacciones));
-
-        var tieneParticipantes = _participantes.Count > 0;
-        EmptyState.IsVisible = !tieneParticipantes;
-        Contenido.IsVisible = tieneParticipantes;
-        LimpiarContainer.IsVisible = tieneParticipantes;
-        CompartirButton.IsVisible = tieneParticipantes;
-        ToolbarSeparator.IsVisible = tieneParticipantes;
-        LiquidacionSection.IsVisible = Transacciones.Count > 0;
-
-        var total = _participantes.Sum(participante => participante.MontoPagado);
-        var porInvitado = tieneParticipantes ? total / _participantes.Count : 0;
-        TotalLabel.Text = MonedaConverter.Formatear(total);
-        PorInvitadoLabel.Text = MonedaConverter.Formatear(porInvitado);
+        await Navigation.PushModalAsync(new NavigationPage(new VaquitaPage(CrearVaquitaAsync)));
     }
 
-    private async void OnAgregarClicked(object? sender, EventArgs e) => await AbrirEditorAsync(null);
-
-    private async void OnParticipanteTapped(object? sender, TappedEventArgs e)
+    private async Task CrearVaquitaAsync(VaquitaEvento vaquita)
     {
-        if (e.Parameter is Participante participante)
-            await AbrirEditorAsync(participante);
+        await _repository.GuardarAsync(vaquita);
+        await CargarAsync();
+        await Navigation.PushAsync(new VaquitaDetallePage(vaquita, _repository));
     }
 
-    private async Task AbrirEditorAsync(Participante? participante) =>
-        await Navigation.PushModalAsync(new NavigationPage(new ParticipantePage(participante, GuardarParticipanteAsync)));
-
-    private async Task GuardarParticipanteAsync(Participante participante)
+    private async void OnVaquitaTapped(object? sender, TappedEventArgs e)
     {
-        var existente = _participantes.FindIndex(actual => actual.Id == participante.Id);
-        if (existente >= 0)
-            _participantes[existente] = participante;
-        else
-            _participantes.Add(participante);
-
-        _participantes = _participantes.OrderBy(actual => actual.Nombre, StringComparer.CurrentCultureIgnoreCase).ToList();
-        await _repository.GuardarAsync(_participantes);
-        ActualizarVista();
+        if (e.Parameter is VaquitaEvento vaquita)
+            await Navigation.PushAsync(new VaquitaDetallePage(vaquita, _repository));
     }
 
-    private async void OnEliminarSwipeInvoked(object? sender, EventArgs e)
+    private async void OnEliminarVaquitaInvoked(object? sender, EventArgs e)
     {
-        if ((sender as SwipeItem)?.CommandParameter is Participante participante)
-            await EliminarAsync(participante);
-    }
-
-    private async Task EliminarAsync(Participante participante)
-    {
-        if (!await DisplayAlertAsync("¿Eliminar invitado?", $"Se eliminará a {participante.Nombre}.", "Eliminar", "Cancelar"))
+        if ((sender as SwipeItem)?.CommandParameter is not VaquitaEvento vaquita)
             return;
 
-        _participantes.RemoveAll(actual => actual.Id == participante.Id);
-        await _repository.GuardarAsync(_participantes);
-        ActualizarVista();
-    }
-
-    private async void OnLimpiarClicked(object? sender, EventArgs e)
-    {
-        if (!await DisplayAlertAsync("¿Borrar todo?", "Se borrarán todos los participantes y gastos. Esta acción no se puede deshacer.", "Limpiar todo", "Cancelar"))
+        if (!await DisplayAlertAsync("¿Eliminar vaquita?", $"Se eliminará “{vaquita.Nombre}” y todos sus gastos.", "Eliminar", "Cancelar"))
             return;
 
-        _participantes.Clear();
-        await _repository.GuardarAsync(_participantes);
-        ActualizarVista();
-    }
-
-    private async void OnCompartirClicked(object? sender, EventArgs e)
-    {
-        var mensaje = CalculadoraVaquita.GenerarMensajeWhatsApp(_participantes, Transacciones);
-        await Share.Default.RequestAsync(new ShareTextRequest { Text = mensaje, Title = "Vaquita: resumen del asado" });
+        await _repository.EliminarAsync(vaquita.Id);
+        await CargarAsync();
     }
 }
