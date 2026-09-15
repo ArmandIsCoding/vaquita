@@ -1,0 +1,30 @@
+# Build output and NuGet restore artifacts
+[Bb]in/
+[Oo]bj/
+artifacts/
+*.nupkg
+*.snupkg
+
+# IDE and user-specific workspace settings
+.idea/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.sln.iml
+
+# Local development settings and logs
+appsettings.Development.json
+secrets.json
+*.log
+
+# Apple signing material must remain local
+*.mobileprovision
+*.p12
+*.cer
+*.key
+
+# macOS metadata
+.DS_Store
