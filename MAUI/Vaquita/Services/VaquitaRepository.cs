@@ -20,7 +20,12 @@ public sealed class VaquitaRepository
         try
         {
             if (File.Exists(FilePath))
-                return await LeerSinBloqueoAsync();
+            {
+                var existentes = await LeerSinBloqueoAsync();
+                if (ConsolidarParticipantesDuplicados(existentes))
+                    await EscribirSinBloqueoAsync(existentes);
+                return existentes;
+            }
 
             if (!File.Exists(LegacyFilePath))
                 return [];
@@ -52,6 +57,7 @@ public sealed class VaquitaRepository
         await Gate.WaitAsync();
         try
         {
+            ConsolidarParticipantesDuplicados([vaquita]);
             var vaquitas = await LeerSinBloqueoAsync();
             var indice = vaquitas.FindIndex(actual => actual.Id == vaquita.Id);
             vaquita.UltimaModificacion = DateTime.Now;
@@ -112,5 +118,38 @@ public sealed class VaquitaRepository
             await JsonSerializer.SerializeAsync(stream, vaquitas, JsonOptions);
 
         File.Move(temporal, FilePath, true);
+    }
+
+    private static bool ConsolidarParticipantesDuplicados(IEnumerable<VaquitaEvento> vaquitas)
+    {
+        var huboCambios = false;
+        foreach (var vaquita in vaquitas)
+        {
+            var consolidados = vaquita.Participantes
+                .Where(participante => !string.IsNullOrWhiteSpace(participante.Nombre))
+                .GroupBy(participante => participante.Nombre.Trim(), StringComparer.CurrentCultureIgnoreCase)
+                .Select(grupo =>
+                {
+                    var primero = grupo.First();
+                    return new Participante
+                    {
+                        Id = primero.Id,
+                        Nombre = primero.Nombre.Trim(),
+                        MontoPagado = grupo.Sum(participante => participante.MontoPagado)
+                    };
+                })
+                .ToList();
+
+            if (consolidados.Count != vaquita.Participantes.Count ||
+                consolidados.Where((participante, indice) =>
+                    participante.Nombre != vaquita.Participantes[indice].Nombre ||
+                    participante.MontoPagado != vaquita.Participantes[indice].MontoPagado).Any())
+            {
+                vaquita.Participantes = consolidados;
+                huboCambios = true;
+            }
+        }
+
+        return huboCambios;
     }
 }

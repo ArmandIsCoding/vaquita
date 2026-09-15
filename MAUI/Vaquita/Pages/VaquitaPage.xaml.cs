@@ -15,7 +15,7 @@ public partial class VaquitaPage : ContentPage
 
     private void OnNombreTextChanged(object? sender, TextChangedEventArgs e)
     {
-        GuardarLabel.Opacity = string.IsNullOrWhiteSpace(e.NewTextValue) ? 0.35 : 1;
+        CrearContainer.Opacity = string.IsNullOrWhiteSpace(e.NewTextValue) ? 0.35 : 1;
     }
 
     private async void OnGuardarClicked(object? sender, EventArgs e)

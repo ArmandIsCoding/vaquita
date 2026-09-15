@@ -6,53 +6,79 @@
              SafeAreaEdges="Container"
              BackgroundColor="#F2F2F7">
 
-    <Grid RowDefinitions="60,*">
-        <Grid Grid.Row="0" ColumnDefinitions="100,*,100" Padding="8,0">
-            <Label Text="Cancelar"
-                   FontSize="17"
-                   TextColor="#007AFF"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCancelarClicked" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Label Grid.Column="1"
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" RowDefinitions="64,Auto,Auto" Padding="18,2,18,14">
+            <Border Grid.Row="0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    StrokeThickness="0"
+                    BackgroundColor="#FFFFFF">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+                <Grid HeightRequest="46" WidthRequest="50">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCancelarClicked" />
+                    </Grid.GestureRecognizers>
+                    <Label Text="×"
+                           FontSize="30"
+                           TextColor="#000000"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Border x:Name="CrearContainer"
+                    Grid.Row="0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    StrokeThickness="0"
+                    BackgroundColor="#007AFF"
+                    Opacity="0.35"
+                    Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="23" />
+                </Border.StrokeShape>
+                <Grid HeightRequest="46" Padding="20,0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGuardarClicked" />
+                    </Grid.GestureRecognizers>
+                    <Label Text="Crear"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="17"
+                           TextColor="#FFFFFF"
+                           VerticalTextAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Label Grid.Row="1"
                    Text="Nueva vaquita"
                    FontFamily="OpenSansSemibold"
-                   FontSize="17"
+                   FontAttributes="Bold"
+                   FontSize="36"
                    TextColor="#000000"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
-            <Label x:Name="GuardarLabel"
-                   Grid.Column="2"
-                   Text="Crear"
-                   FontFamily="OpenSansSemibold"
-                   FontSize="17"
-                   TextColor="#007AFF"
-                   Opacity="0.35"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnGuardarClicked" />
-                </Label.GestureRecognizers>
-            </Label>
+                   Margin="0,4,0,0" />
+            <Label Grid.Row="2"
+                   Text="Ponéle un nombre que después puedas reconocer."
+                   FontSize="15"
+                   TextColor="#8E8E93"
+                   Margin="2,0,0,0" />
         </Grid>
 
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="18,26,18,30" Spacing="8">
-                <Label Text="DETALLES"
+            <VerticalStackLayout Padding="18,22,18,30" Spacing="8">
+                <Label Text="INFORMACIÓN"
                        Margin="16,0,0,0"
                        FontSize="13"
                        TextColor="#6D6D72" />
-                <Border StrokeThickness="0" BackgroundColor="#FFFFFF" Padding="16,0">
+                <Border StrokeThickness="0" BackgroundColor="#FFFFFF" Padding="18,0">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12" />
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="54,1,54">
+                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="58,1,58">
                         <Entry x:Name="NombreEntry"
                                Grid.ColumnSpan="2"
-                               Placeholder="Nombre, por ejemplo: Viaje a Córdoba"
+                               Placeholder="Ej. Viaje a Córdoba"
                                ReturnType="Done"
                                FontSize="17"
                                TextColor="#000000"
@@ -76,7 +102,7 @@
                                     BackgroundColor="Transparent" />
                     </Grid>
                 </Border>
-                <Label Text="Podés usar una vaquita para un viaje, una salida, un regalo o cualquier gasto compartido."
+                <Label Text="Puede ser un viaje, una salida, un regalo o cualquier gasto compartido."
                        Margin="16,0"
                        FontSize="13"
                        LineHeight="1.15"

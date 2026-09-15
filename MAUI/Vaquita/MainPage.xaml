@@ -12,8 +12,12 @@
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*">
-        <Grid Grid.Row="0" RowDefinitions="64,Auto" Padding="18,2,18,10">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*,Auto"
+              HeightRequest="64"
+              Padding="18,2,18,2">
             <Border Grid.Row="0"
+                    Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     StrokeThickness="0"
@@ -34,13 +38,12 @@
                 </Grid>
             </Border>
 
-            <Label Grid.Row="1"
-                   Text="Vaquita"
+            <Label Text="Vaquita"
                    FontFamily="OpenSansSemibold"
                    FontAttributes="Bold"
-                   FontSize="42"
+                   FontSize="36"
                    TextColor="#000000"
-                   Margin="0,4,0,0" />
+                   VerticalTextAlignment="Center" />
         </Grid>
 
         <Grid x:Name="EmptyState" Grid.Row="1" Padding="30,0,30,100">

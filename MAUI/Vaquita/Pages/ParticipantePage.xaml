@@ -131,6 +131,13 @@
                     </VerticalStackLayout>
                 </Border>
 
+                <Label x:Name="ErrorNombreLabel"
+                       IsVisible="False"
+                       Text="Esta persona ya participa en esta vaquita."
+                       Margin="16,0"
+                       FontSize="13"
+                       TextColor="#FF3B30" />
+
                 <Label Text="Podés escribir un nombre nuevo o elegir una persona usada anteriormente."
                        Margin="16,0"
                        FontSize="13"

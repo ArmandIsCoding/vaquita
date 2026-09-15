@@ -18,6 +18,12 @@ public static class MauiProgram
 					handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
 					handler.PlatformView.Layer.BorderWidth = 0;
 				});
+				Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("VaquitaBorderlessDatePicker", (handler, _) =>
+				{
+					handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+					handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+					handler.PlatformView.Layer.BorderWidth = 0;
+				});
 #endif
 			})
 			.ConfigureFonts(fonts =>

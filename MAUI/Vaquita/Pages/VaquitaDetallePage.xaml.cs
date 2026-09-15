@@ -60,12 +60,36 @@ public partial class VaquitaDetallePage : ContentPage
     private async Task AbrirEditorAsync(Participante? participante)
     {
         var nombresConocidos = await _repository.ObtenerNombresConocidosAsync();
+        var nombresNoDisponibles = _vaquita.Participantes
+            .Where(actual => actual.Id != participante?.Id)
+            .Select(actual => actual.Nombre)
+            .ToHashSet(StringComparer.CurrentCultureIgnoreCase);
+        var nombresDisponibles = nombresConocidos
+            .Where(nombre => !nombresNoDisponibles.Contains(nombre))
+            .ToList();
+
         await Navigation.PushModalAsync(new NavigationPage(
-            new ParticipantePage(participante, nombresConocidos, GuardarParticipanteAsync)));
+            new ParticipantePage(
+                participante,
+                nombresDisponibles,
+                nombresNoDisponibles,
+                GuardarParticipanteAsync)));
     }
 
-    private async Task GuardarParticipanteAsync(Participante participante)
+    private async Task<bool> GuardarParticipanteAsync(Participante participante)
     {
+        var nombreDuplicado = _vaquita.Participantes.Any(actual =>
+            actual.Id != participante.Id &&
+            string.Equals(actual.Nombre.Trim(), participante.Nombre.Trim(), StringComparison.CurrentCultureIgnoreCase));
+        if (nombreDuplicado)
+        {
+            await DisplayAlertAsync(
+                "Participante duplicado",
+                $"{participante.Nombre} ya participa en esta vaquita.",
+                "Aceptar");
+            return false;
+        }
+
         var indice = _vaquita.Participantes.FindIndex(actual => actual.Id == participante.Id);
         if (indice >= 0)
             _vaquita.Participantes[indice] = participante;
@@ -74,6 +98,7 @@ public partial class VaquitaDetallePage : ContentPage
 
         await _repository.GuardarAsync(_vaquita);
         ActualizarVista();
+        return true;
     }
 
     private async void OnEliminarParticipanteInvoked(object? sender, EventArgs e)
