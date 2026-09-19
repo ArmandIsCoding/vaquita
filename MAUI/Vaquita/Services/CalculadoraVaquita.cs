@@ -53,8 +53,8 @@ public static class CalculadoraVaquita
             .AppendLine($"🐮 *{nombreVaquita}*")
             .AppendLine("Resumen de gastos")
             .AppendLine()
-            .AppendLine($"💰 Total gastado: {moneda}{total:N0}")
-            .AppendLine($"👤 Por participante: {moneda}{porParticipante:N0}")
+            .AppendLine($"💰 Total gastado: {moneda}{total:N2}")
+            .AppendLine($"👤 Por participante: {moneda}{porParticipante:N2}")
             .AppendLine()
             .AppendLine("📝 *Liquidación:*");
 
@@ -67,7 +67,7 @@ public static class CalculadoraVaquita
         {
             foreach (var transaccion in liquidacion)
             {
-                mensaje.AppendLine($"• *{transaccion.De}* le paga {moneda}{transaccion.Monto:N0} a *{transaccion.A}*");
+                mensaje.AppendLine($"• *{transaccion.De}* le paga {moneda}{transaccion.Monto:N2} a *{transaccion.A}*");
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Vaquita.Controls;
 
 namespace Vaquita;
 
@@ -11,12 +12,24 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureMauiHandlers(handlers =>
 			{
+#if ANDROID
+				Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("VaquitaDecimalEntry", (handler, view) =>
+				{
+					if (view is DecimalEntry)
+						handler.PlatformView.InputType = Android.Text.InputTypes.ClassNumber | Android.Text.InputTypes.NumberFlagDecimal;
+				});
+#endif
 #if IOS
 				Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("VaquitaBorderlessEntry", (handler, _) =>
 				{
 					handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 					handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
 					handler.PlatformView.Layer.BorderWidth = 0;
+				});
+				Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("VaquitaDecimalEntry", (handler, view) =>
+				{
+					if (view is DecimalEntry)
+						handler.PlatformView.KeyboardType = UIKit.UIKeyboardType.DecimalPad;
 				});
 				Microsoft.Maui.Handlers.DatePickerHandler.Mapper.AppendToMapping("VaquitaBorderlessDatePicker", (handler, _) =>
 				{

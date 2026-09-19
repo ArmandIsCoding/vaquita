@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Vaquita.Controls"
              x:Class="Vaquita.Pages.ParticipantePage"
              NavigationPage.HasNavigationBar="False"
              SafeAreaEdges="Container"
@@ -86,12 +87,12 @@
                                FontSize="17"
                                TextColor="#000000"
                                VerticalTextAlignment="Center" />
-                        <Entry x:Name="MontoEntry"
+                        <controls:DecimalEntry x:Name="MontoEntry"
                                Grid.Row="2"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"
                                Margin="12,0,0,0"
-                               Placeholder="0"
+                               Placeholder="0,00"
                                Keyboard="Numeric"
                                ReturnType="Done"
                                FontSize="17"

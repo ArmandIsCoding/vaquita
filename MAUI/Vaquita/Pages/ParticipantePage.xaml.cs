@@ -5,6 +5,8 @@ namespace Vaquita.Pages;
 
 public partial class ParticipantePage : ContentPage
 {
+    private static readonly CultureInfo CulturaArgentina = CultureInfo.GetCultureInfo("es-AR");
+
     private readonly Participante? _original;
     private readonly IReadOnlyList<string> _nombresConocidos;
     private readonly HashSet<string> _nombresNoDisponibles;
@@ -32,7 +34,7 @@ public partial class ParticipantePage : ContentPage
         if (participante is not null)
         {
             NombreEntry.Text = participante.Nombre;
-            MontoEntry.Text = participante.MontoPagado.ToString("0", CultureInfo.CurrentCulture);
+            MontoEntry.Text = participante.MontoPagado.ToString("0.##", CulturaArgentina);
         }
     }
 
@@ -91,8 +93,8 @@ public partial class ParticipantePage : ContentPage
         if (string.IsNullOrWhiteSpace(nombre) || _nombresNoDisponibles.Contains(nombre))
             return;
 
-        var textoMonto = MontoEntry.Text?.Trim() ?? string.Empty;
-        if (!decimal.TryParse(textoMonto, NumberStyles.Number, CultureInfo.CurrentCulture, out var monto) || monto < 0)
+        var textoMonto = MontoEntry.Text?.Trim().Replace('.', ',') ?? string.Empty;
+        if (!decimal.TryParse(textoMonto, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CulturaArgentina, out var monto) || monto < 0)
         {
             await DisplayAlertAsync("Monto inválido", "Ingresá un número mayor o igual a cero.", "Aceptar");
             return;
