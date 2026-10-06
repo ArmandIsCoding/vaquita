@@ -61,3 +61,42 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 **/._*
+
+# macOS and local Xcode/build output
+.DS_Store
+DerivedData/
+build/
+*.xcarchive/
+*.xcresult/
+*.xcdistributionlogs/
+*.log
+
+# Signing, credentials and device data stay on the developer's machine
+*.local.xcconfig
+.env
+.env.*
+!.env.example
+*.p8
+*.p12
+*.pfx
+*.pem
+*.key
+*.cer
+*.cert
+*.mobileprovision
+*.provisionprofile
+ExportOptions*.plist
+*.keychain
+*.keychain-db
+*.sqlite*
+*.store
+*.store-shm
+*.store-wal
+
+# Private App Store correspondence, recordings and publication records
+Distribution/private/
+Distribution/AppReview-*
+*.mp4
+*.MP4
+*.mov
+*.MOV

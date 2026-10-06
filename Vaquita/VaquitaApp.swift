@@ -3,15 +3,38 @@ import SwiftData
 
 @main
 struct VaquitaApp: App {
-    // Ya no necesitamos la variable sharedModelContainer acá
-    // porque le pasamos el modelo directamente al modificador abajo.
+    @State private var container: ModelContainer?
+    @State private var errorDeInicio = false
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Group {
+                if let container {
+                    ContentView().modelContainer(container)
+                } else if errorDeInicio {
+                    ContentUnavailableView {
+                        Label("No pudimos abrir tus datos", systemImage: "externaldrive.badge.exclamationmark")
+                    } description: {
+                        Text("Tus datos no fueron borrados. Comprobá que haya espacio disponible y volvé a intentar.")
+                    } actions: {
+                        Button("Reintentar", action: abrir)
+                    }
+                } else {
+                    ProgressView("Abriendo Vaquita…")
+                }
+            }
+            .task { if container == nil { abrir() } }
         }
-        // Esta línea es la que hace toda la magia por vos:
-        // Crea el archivo SQL, mapea la clase Participante y prepara el Context.
-        .modelContainer(for: Participante.self)
+    }
+
+    private func abrir() {
+        do {
+            let nuevo = try ModelContainer(for: Evento.self, Participante.self)
+            try Persistencia.preparar(nuevo.mainContext)
+            container = nuevo
+            errorDeInicio = false
+        } catch {
+            errorDeInicio = true
+        }
     }
 }

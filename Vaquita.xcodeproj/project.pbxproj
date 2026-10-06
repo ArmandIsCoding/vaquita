@@ -6,14 +6,44 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		FA000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25112E642F70E912008FEB11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25112E6B2F70E912008FEB11;
+			remoteInfo = Vaquita;
+		};
+		FB000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25112E642F70E912008FEB11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25112E6B2F70E912008FEB11;
+			remoteInfo = Vaquita;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		FC0000000000000000000001 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Signing.xcconfig; sourceTree = "<group>"; };
 		25112E6C2F70E912008FEB11 /* Vaquita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vaquita.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0000000000000000000003 /* VaquitaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = VaquitaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0000000000000000000003 /* VaquitaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = VaquitaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		25112E6E2F70E912008FEB11 /* Vaquita */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Vaquita;
+			sourceTree = "<group>";
+		};
+		FA0000000000000000000002 /* VaquitaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VaquitaTests;
+			sourceTree = "<group>";
+		};
+		FB0000000000000000000002 /* VaquitaUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VaquitaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,14 +56,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA0000000000000000000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB0000000000000000000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		25112E632F70E912008FEB11 = {
 			isa = PBXGroup;
 			children = (
+				FC0000000000000000000001 /* Signing.xcconfig */,
 				25112E6E2F70E912008FEB11 /* Vaquita */,
 				25112E6D2F70E912008FEB11 /* Products */,
+				FA0000000000000000000002 /* VaquitaTests */,
+				FB0000000000000000000002 /* VaquitaUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				25112E6C2F70E912008FEB11 /* Vaquita.app */,
+				FA0000000000000000000003 /* VaquitaTests.xctest */,
+				FB0000000000000000000003 /* VaquitaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +119,48 @@
 			productReference = 25112E6C2F70E912008FEB11 /* Vaquita.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FA0000000000000000000001 /* VaquitaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA0000000000000000000007 /* Build configuration list for PBXNativeTarget "VaquitaTests" */;
+			buildPhases = (
+				FA0000000000000000000004 /* Sources */,
+				FA0000000000000000000005 /* Frameworks */,
+				FA0000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA000000000000000000000A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA0000000000000000000002 /* VaquitaTests */,
+			);
+			name = VaquitaTests;
+			productName = VaquitaTests;
+			productReference = FA0000000000000000000003 /* VaquitaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FB0000000000000000000001 /* VaquitaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB0000000000000000000007 /* Build configuration list for PBXNativeTarget "VaquitaUITests" */;
+			buildPhases = (
+				FB0000000000000000000004 /* Sources */,
+				FB0000000000000000000005 /* Frameworks */,
+				FB0000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB000000000000000000000A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FB0000000000000000000002 /* VaquitaUITests */,
+			);
+			name = VaquitaUITests;
+			productName = VaquitaUITests;
+			productReference = FB0000000000000000000003 /* VaquitaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -86,10 +177,10 @@
 				};
 			};
 			buildConfigurationList = 25112E672F70E912008FEB11 /* Build configuration list for PBXProject "Vaquita" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				es,
 				Base,
 			);
 			mainGroup = 25112E632F70E912008FEB11;
@@ -100,12 +191,28 @@
 			projectRoot = "";
 			targets = (
 				25112E6B2F70E912008FEB11 /* Vaquita */,
+				FA0000000000000000000001 /* VaquitaTests */,
+				FB0000000000000000000001 /* VaquitaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		25112E6A2F70E912008FEB11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA0000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB0000000000000000000006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,11 +229,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA0000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB0000000000000000000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA000000000000000000000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25112E6B2F70E912008FEB11 /* Vaquita */;
+			targetProxy = FA000000000000000000000B /* PBXContainerItemProxy */;
+		};
+		FB000000000000000000000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25112E6B2F70E912008FEB11 /* Vaquita */;
+			targetProxy = FB000000000000000000000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		25112E772F70E913008FEB11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0000000000000000000001 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -177,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -190,6 +325,7 @@
 		};
 		25112E782F70E913008FEB11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC0000000000000000000001 /* Signing.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -234,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -251,9 +387,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3H9SAXC23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -283,9 +419,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3H9SAXC23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,6 +444,68 @@
 			};
 			name = Release;
 		};
+		FA0000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armando.VaquitaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vaquita.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vaquita";
+			};
+			name = Debug;
+		};
+		FA0000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armando.VaquitaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vaquita.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vaquita";
+			};
+			name = Release;
+		};
+		FB0000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armando.VaquitaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Vaquita;
+			};
+			name = Debug;
+		};
+		FB0000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armando.VaquitaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Vaquita;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -325,6 +523,24 @@
 			buildConfigurations = (
 				25112E7A2F70E913008FEB11 /* Debug */,
 				25112E7B2F70E913008FEB11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA0000000000000000000007 /* Build configuration list for PBXNativeTarget "VaquitaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA0000000000000000000008 /* Debug */,
+				FA0000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB0000000000000000000007 /* Build configuration list for PBXNativeTarget "VaquitaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB0000000000000000000008 /* Debug */,
+				FB0000000000000000000009 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

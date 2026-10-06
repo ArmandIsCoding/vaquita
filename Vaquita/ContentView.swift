@@ -3,142 +3,192 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Participante.nombre) private var participantes: [Participante]
-    
-    @State private var mostrandoAgregar = false
-    @State private var participanteAEditar: Participante?
-    @State private var mostrandoConfirmacionLimpiar = false
+    @Query(sort: \Evento.fechaCreacion, order: .reverse) private var eventos: [Evento]
 
-    // Propiedad computada para evitar cálculos redundantes en el body
-    private var transacciones: [Transaccion] {
-        CalculadoraVaquita.calcularLiquidacion(participantes: participantes)
+    @State private var mostrandoInformacion = false
+    @State private var errorGuardado = false
+    @State private var ruta: [Evento] = []
+    @State private var mostrandoNuevoEvento = false
+    @State private var eventoRecienCreado: Evento?
+    @State private var eventoAEditar: Evento?
+    @State private var eventoAEliminar: Evento?
+
+    var body: some View {
+        NavigationStack(path: $ruta) {
+            List {
+                ForEach(eventos) { evento in
+                    EventoRow(evento: evento) {
+                        eventoAEditar = evento
+                    } onDelete: {
+                        eventoAEliminar = evento
+                    }
+                }
+            }
+            .navigationTitle("Eventos")
+            .overlay {
+                if eventos.isEmpty {
+                    ContentUnavailableView(
+                        "Todavía no hay eventos",
+                        systemImage: "calendar.badge.plus",
+                        description: Text("Creá una juntada para empezar a dividir gastos.")
+                    )
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { mostrandoInformacion = true } label: {
+                        Label("Ayuda y privacidad", systemImage: "info.circle")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        mostrandoNuevoEvento = true
+                    } label: {
+                        Label("Nuevo evento", systemImage: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $mostrandoInformacion) { InformacionView() }
+            .alert("No se pudo eliminar", isPresented: $errorGuardado) {
+                Button("Aceptar", role: .cancel) { }
+            } message: {
+                Text("El evento se conservó. Comprobá el espacio disponible y volvé a intentar.")
+            }
+            .navigationDestination(for: Evento.self) { evento in
+                EventoDetalleView(evento: evento)
+            }
+            .sheet(isPresented: $mostrandoNuevoEvento, onDismiss: {
+                if let eventoRecienCreado {
+                    ruta.append(eventoRecienCreado)
+                    self.eventoRecienCreado = nil
+                }
+            }) {
+                EditarEventoView { eventoRecienCreado = $0 }
+            }
+            .sheet(item: $eventoAEditar) { evento in
+                EditarEventoView(evento: evento)
+            }
+            .alert(
+                "¿Eliminar este evento?",
+                isPresented: Binding(
+                    get: { eventoAEliminar != nil },
+                    set: { if !$0 { eventoAEliminar = nil } }
+                ),
+                presenting: eventoAEliminar
+            ) { evento in
+                Button("Cancelar", role: .cancel) { }
+                Button("Eliminar", role: .destructive) {
+                    do {
+                        try Persistencia.guardar(en: modelContext) { modelContext.delete(evento) }
+                    } catch { errorGuardado = true }
+                }
+            } message: { evento in
+                Text("Se eliminarán “\(evento.nombre)” y todos sus participantes.")
+            }
+        }
+    }
+}
+
+private struct EventoRow: View {
+    let evento: Evento
+    let onEdit: () -> Void
+    let onDelete: () -> Void
+
+    private var mensaje: String? {
+        guard let liquidacion = try? CalculadoraVaquita.liquidar(participantes: evento.participantes) else { return nil }
+        return CalculadoraVaquita.generarMensajeParaCompartir(evento: evento, liquidacion: liquidacion)
     }
 
-    private var currencyFormat: FloatingPointFormatStyle<Double>.Currency {
-        .currency(code: Locale.current.currency?.identifier ?? "USD")
-        .precision(.fractionLength(0))
+    var body: some View {
+        NavigationLink(value: evento) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(evento.nombre)
+                    .font(.headline)
+                Text(evento.participantes.count == 1 ? "1 participante" : "\(evento.participantes.count) participantes")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .swipeActions(edge: .leading) {
+            Button("Editar", systemImage: "pencil", action: onEdit)
+                .tint(.blue)
+            if let mensaje {
+                ShareLink(item: mensaje) { Label("Compartir", systemImage: "square.and.arrow.up") }
+                    .tint(.green)
+            }
+        }
+        .swipeActions(edge: .trailing) {
+            Button("Eliminar", systemImage: "trash", role: .destructive, action: onDelete)
+        }
+        .contextMenu {
+            Button("Editar", systemImage: "pencil", action: onEdit)
+            if let mensaje {
+                ShareLink(item: mensaje) { Label("Compartir", systemImage: "square.and.arrow.up") }
+            }
+            Button("Eliminar", systemImage: "trash", role: .destructive, action: onDelete)
+        }
+    }
+}
+
+private struct EditarEventoView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+
+    let evento: Evento?
+    let onCreated: ((Evento) -> Void)?
+    @State private var nombre: String
+    @State private var errorGuardado = false
+
+    init(evento: Evento? = nil, onCreated: ((Evento) -> Void)? = nil) {
+        self.evento = evento
+        self.onCreated = onCreated
+        _nombre = State(initialValue: evento?.nombre ?? "")
     }
 
     var body: some View {
         NavigationStack {
-            List {
-                Section(header: Text("Invitados")) {
-                    ForEach(participantes) { invitado in
-                        Button {
-                            participanteAEditar = invitado
-                        } label: {
-                            HStack {
-                                Text(invitado.nombre)
-                                    .font(.headline)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Text(invitado.montoPagado, format: currencyFormat)
-                                    .foregroundStyle(invitado.montoPagado > 0 ? .green : .secondary)
-                                    .monospacedDigit()
-                            }
-                        }
-                    }
-                    .onDelete(perform: eliminarParticipante)
-                }
-                
-                if !participantes.isEmpty {
-                    if !transacciones.isEmpty {
-                        Section(header: Text("¿Cómo se paga?")) {
-                            ForEach(transacciones) { t in
-                                HStack {
-                                    Image(systemName: "arrow.right.circle.fill")
-                                        .foregroundStyle(.blue)
-                                    Text("**\(t.de)** paga a **\(t.a)**")
-                                    Spacer()
-                                    Text(t.monto, format: currencyFormat)
-                                        .bold()
-                                }
-                            }
-                        }
-                    }
-                    
-                    Section(header: Text("Resumen General")) {
-                        let total = participantes.reduce(0) { $0 + $1.montoPagado }
-                        let porInvitado = total / Double(max(1, participantes.count))
-                        
-                        HStack {
-                            Text("Total Gastado:")
-                            Spacer()
-                            Text(total, format: currencyFormat)
-                        }
-                        HStack {
-                            Text("Costo por Invitado:")
-                            Spacer()
-                            Text(porInvitado, format: currencyFormat)
-                                .foregroundStyle(.blue)
-                                .bold()
-                        }
-                    }
-                }
+            Form {
+                TextField("Nombre del evento", text: $nombre)
+                    .accessibilityIdentifier("nombreEvento")
+                    .textInputAutocapitalization(.sentences)
             }
-            .navigationTitle("Vaquita")
-            .overlay {
-                if participantes.isEmpty {
-                    ContentUnavailableView("No hay nadie", systemImage: "person.3.fill", description: Text("Agregá a los invitados para empezar el asado."))
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if !participantes.isEmpty {
-                        Button(role: .destructive) {
-                            mostrandoConfirmacionLimpiar = true
-                        } label: {
-                            Text("Limpiar")
-                                .foregroundStyle(.red)
-                        }
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack(spacing: 20) {
-                        if !participantes.isEmpty {
-                            let mensaje = CalculadoraVaquita.generarMensajeWhatsApp(participantes: participantes, transacciones: transacciones)
-                            
-                            ShareLink(item: mensaje) {
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                        
-                        Button {
-                            participanteAEditar = nil
-                            mostrandoAgregar = true
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-                    }
-                }
-            }
-            .alert("¿Borrar todo?", isPresented: $mostrandoConfirmacionLimpiar) {
-                Button("Cancelar", role: .cancel) { }
-                Button("Limpiar Todo", role: .destructive) {
-                    limpiarBaseDeDatos()
-                }
+            .alert("No se pudo guardar", isPresented: $errorGuardado) {
+                Button("Aceptar", role: .cancel) { }
             } message: {
-                Text("Se borrarán todos los participantes y gastos. Esta acción no se puede deshacer.")
+                Text("No se guardaron los cambios. Comprobá el espacio disponible y volvé a tocar Guardar.")
             }
-            .sheet(isPresented: $mostrandoAgregar) {
-                AgregarParticipanteView()
-            }
-            .sheet(item: $participanteAEditar) { invitado in
-                AgregarParticipanteView(participanteAEditar: invitado)
+            .navigationTitle(evento == nil ? "Nuevo evento" : "Editar evento")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancelar") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Guardar", action: guardar)
+                        .disabled(nombreLimpio.isEmpty)
+                }
             }
         }
     }
 
-    private func limpiarBaseDeDatos() {
-        try? modelContext.delete(model: Participante.self)
-        try? modelContext.save()
+    private var nombreLimpio: String {
+        nombre.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    private func eliminarParticipante(offsets: IndexSet) {
-        for index in offsets {
-            modelContext.delete(participantes[index])
-        }
-        try? modelContext.save()
+    private func guardar() {
+        do {
+            var eventoCreado: Evento?
+            try Persistencia.guardar(en: modelContext) {
+                if let evento {
+                    evento.nombre = nombreLimpio
+                } else {
+                    let nuevoEvento = Evento(nombre: nombreLimpio)
+                    modelContext.insert(nuevoEvento)
+                    eventoCreado = nuevoEvento
+                }
+            }
+            if let eventoCreado { onCreated?(eventoCreado) }
+            dismiss()
+        } catch { errorGuardado = true }
     }
 }
