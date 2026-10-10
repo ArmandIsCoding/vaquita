@@ -23,6 +23,7 @@ struct VaquitaApp: App {
                     ProgressView("Abriendo Vaquita…")
                 }
             }
+            .tint(EstiloVaquita.acento)
             .task { if container == nil { abrir() } }
         }
     }

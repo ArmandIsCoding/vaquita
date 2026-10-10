@@ -3,6 +3,28 @@ import XCTest
 @MainActor
 final class VaquitaUITests: XCTestCase {
     private var capturarEntrada = false
+
+    private func mostrar(_ elemento: XCUIElement, en app: XCUIApplication, intentos: Int = 8) {
+        for _ in 0..<intentos {
+            let centro = elemento.exists ? elemento.frame.midY : .greatestFiniteMagnitude
+            let techo = app.navigationBars.firstMatch.frame.maxY + 12
+            let piso = app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY - 60 : app.frame.maxY - 140
+            // A partly visible row may be "hittable" while its center is covered by the fixed action.
+            if elemento.isHittable && centro > techo && centro < piso { return }
+            if centro < techo {
+                app.swipeDown(velocity: .slow)
+            } else {
+                app.swipeUp(velocity: .slow)
+            }
+        }
+    }
+
+    private func capturar(_ nombre: String, app: XCUIApplication) {
+        let captura = XCTAttachment(screenshot: app.screenshot())
+        captura.name = nombre
+        captura.lifetime = .keepAlways
+        add(captura)
+    }
     private func iniciar(textoGrande: Bool = false) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments += ["-AppleLanguages", "(es)", "-AppleLocale", "es_AR"]
@@ -18,10 +40,16 @@ final class VaquitaUITests: XCTestCase {
         let nombreCampo = app.textFields["nombreParticipante"]
         XCTAssertTrue(nombreCampo.waitForExistence(timeout: 5))
         nombreCampo.tap(); nombreCampo.typeText(nombre)
-        let monto = app.textFields["importe"]
-        monto.tap(); monto.typeText(importe)
         XCTAssertEqual(nombreCampo.value as? String, nombre)
+        if app.buttons["ocultarTeclado"].exists { app.buttons["ocultarTeclado"].tap() }
+        let monto = app.textFields["importe"]
+        mostrar(monto, en: app)
+        monto.tap(); monto.typeText(importe)
         XCTAssertEqual(monto.value as? String, importe)
+        if !capturarEntrada && nombre == "Ana" {
+            if app.buttons["ocultarTeclado"].exists { app.buttons["ocultarTeclado"].tap() }
+            capturar("Aporte", app: app)
+        }
         if capturarEntrada {
             let captura = XCTAttachment(screenshot: app.screenshot())
             captura.name = "Formulario-texto-grande"; captura.lifetime = .keepAlways; add(captura)
@@ -30,6 +58,15 @@ final class VaquitaUITests: XCTestCase {
         let guardar = app.buttons["guardarParticipante"]
         XCTAssertTrue(guardar.isEnabled)
         guardar.tap()
+    }
+
+    func testAccesibilidadDeInicio() throws {
+        let app = iniciar()
+        try app.performAccessibilityAudit(for: [.contrast, .hitRegion, .sufficientElementDescription, .textClipped, .trait]) { issue in
+            print("Accessibility home:", issue.compactDescription, issue.element?.debugDescription ?? "no element")
+            return false
+        }
+        capturar("Inicio-auditado", app: app)
     }
 
     func testFlujoCompletoYCapturas() throws {
@@ -63,7 +100,8 @@ final class VaquitaUITests: XCTestCase {
         app.buttons["Más opciones"].tap()
         app.buttons["Limpiar participantes"].tap()
         app.alerts.buttons["Cancelar"].tap()
-        XCTAssertTrue(app.staticTexts["Ana"].exists)
+        mostrar(app.buttons["participante-Ana"], en: app)
+        XCTAssertTrue(app.buttons["participante-Ana"].exists)
         app.buttons["Más opciones"].tap()
         app.buttons["Limpiar participantes"].tap()
         app.alerts.buttons["Limpiar"].tap()
@@ -86,13 +124,16 @@ final class VaquitaUITests: XCTestCase {
     func testPrivacidadAccesibleSinConexion() throws {
         let app = iniciar()
         app.buttons["Ayuda y privacidad"].tap()
+        mostrar(app.buttons["Política de privacidad"], en: app)
         app.buttons["Política de privacidad"].tap()
         XCTAssertTrue(app.staticTexts["Política de privacidad"].waitForExistence(timeout: 5))
         let captura = XCTAttachment(screenshot: app.screenshot()); captura.name = "Privacidad"; captura.lifetime = .keepAlways; add(captura)
     }
     func testCapturasTiendaYAccesibilidad() throws {
         let app = iniciar()
+        capturar("Inicio", app: app)
         app.buttons["Nuevo evento"].tap()
+        capturar("Nuevo-evento", app: app)
         app.textFields["nombreEvento"].tap()
         app.textFields["nombreEvento"].typeText("Asado del domingo")
         app.buttons["Guardar"].tap()
@@ -108,9 +149,13 @@ final class VaquitaUITests: XCTestCase {
         detalle.name = "AppStore-01-Detalle"; detalle.lifetime = .keepAlways; add(detalle)
         app.swipeUp()
         let resumen = XCTAttachment(screenshot: app.screenshot())
-        resumen.name = "AppStore-02-Resumen"; resumen.lifetime = .keepAlways; add(resumen)
+        resumen.name = "AppStore-02-Participantes"; resumen.lifetime = .keepAlways; add(resumen)
         app.navigationBars.buttons.element(boundBy: 0).tap()
         XCTAssertTrue(app.navigationBars["Eventos"].waitForExistence(timeout: 5))
+        try app.performAccessibilityAudit(for: [.contrast, .hitRegion, .sufficientElementDescription, .textClipped, .trait]) { issue in
+            print("Accessibility home:", issue.compactDescription, issue.element?.debugDescription ?? "no element")
+            return false
+        }
         let lista = XCTAttachment(screenshot: app.screenshot())
         lista.name = "AppStore-03-Eventos"; lista.lifetime = .keepAlways; add(lista)
     }
@@ -125,16 +170,65 @@ final class VaquitaUITests: XCTestCase {
         XCTAssertTrue(app.alerts["No se pudo guardar"].waitForExistence(timeout: 5))
         app.alerts.buttons["Aceptar"].tap()
         app.buttons["Cancelar"].tap()
-        app.staticTexts["Ana"].tap()
+        mostrar(app.buttons["participante-Ana"], en: app)
+        app.buttons["participante-Ana"].tap()
         let nombre = app.textFields["nombreParticipante"]
         XCTAssertTrue(nombre.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["Editar aporte"].exists)
+        XCTAssertEqual(app.textFields["importe"].value as? String, "12,50")
         nombre.tap()
         nombre.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: 3) + "Ana María")
         app.buttons["Guardar"].tap()
-        XCTAssertTrue(app.staticTexts["Ana María"].waitForExistence(timeout: 5))
-        app.staticTexts["Ana María"].swipeLeft()
+        mostrar(app.buttons["participante-Ana María"], en: app)
+        XCTAssertTrue(app.buttons["participante-Ana María"].waitForExistence(timeout: 5))
+        app.buttons["participante-Ana María"].swipeLeft()
         app.buttons["Eliminar"].tap()
         XCTAssertTrue(app.staticTexts["No hay participantes"].waitForExistence(timeout: 5))
+    }
+
+    func testFiltrarEditarYEliminarEvento() throws {
+        let app = iniciar()
+        let prefijo = "Plan \(Int(Date().timeIntervalSince1970))"
+        for indice in 1...5 {
+            app.buttons["Nuevo evento"].tap()
+            let campo = app.textFields["nombreEvento"]
+            campo.tap()
+            campo.typeText("\(prefijo) \(indice)")
+            app.buttons["Guardar"].tap()
+            XCTAssertTrue(app.buttons["Agregar participante"].waitForExistence(timeout: 5))
+            app.navigationBars.buttons.element(boundBy: 0).tap()
+        }
+        let busqueda = app.textFields["buscarEvento"]
+        mostrar(busqueda, en: app)
+        busqueda.tap()
+        busqueda.typeText("\(prefijo) 5")
+        let evento = app.buttons["evento-\(prefijo) 5"]
+        XCTAssertTrue(evento.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["evento-\(prefijo) 4"].exists)
+        // Dismiss the search keyboard without clearing the filter.
+        busqueda.typeText("\n")
+        evento.press(forDuration: 1)
+        app.buttons["Editar"].tap()
+        let campo = app.textFields["nombreEvento"]
+        XCTAssertTrue(campo.waitForExistence(timeout: 5))
+        campo.tap()
+        campo.typeText(" editado")
+        let nombreEditado = try XCTUnwrap(campo.value as? String)
+        XCTAssertTrue(nombreEditado.contains("editado"))
+        app.buttons["Guardar"].tap()
+        app.buttons["Borrar búsqueda"].tap()
+        let editado = app.buttons["evento-\(nombreEditado)"]
+        XCTAssertTrue(editado.waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["evento-\(prefijo) 5"].exists)
+        editado.press(forDuration: 1)
+        app.buttons["Eliminar"].tap()
+        app.alerts.buttons["Cancelar"].tap()
+        XCTAssertTrue(editado.exists)
+        editado.press(forDuration: 1)
+        app.buttons["Eliminar"].tap()
+        app.alerts.buttons["Eliminar"].tap()
+        XCTAssertFalse(editado.exists)
+        XCTAssertTrue(app.buttons["evento-\(prefijo) 4"].waitForExistence(timeout: 5))
     }
 
     func testTextoGrande() throws {

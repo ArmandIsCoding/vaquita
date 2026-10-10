@@ -10,6 +10,12 @@ Aplicación nativa para iPhone y iPad que organiza gastos compartidos por evento
 - Abrir `Vaquita.xcodeproj`, seleccionar el esquema compartido `Vaquita` y un simulador.
 - Para firmar en dispositivos, iniciar sesión con Apple Developer en Xcode, copiar `Config/Signing.local.xcconfig.example` a `Config/Signing.local.xcconfig` y completar el Team ID. El archivo local está excluido de Git; los simuladores no lo necesitan.
 
+## Diseño de la interfaz
+
+La interfaz usa una paleta de crema, verde bosque y lima, con variantes semánticas para modo oscuro. `DisenoVaquita.swift` reúne colores, tarjetas, avatares, ilustración vectorial y botones; las pantallas comparten estos componentes y usan tipografía del sistema con Dynamic Type. Las animaciones de pulsación respetan Reducir movimiento.
+
+Los eventos muestran sus totales, moneda y participantes; a partir de cinco eventos aparece la búsqueda. El detalle prioriza el total, el costo por persona y las transferencias, y luego muestra los aportes y balances individuales. La acción principal permanece accesible al pie de la pantalla. Los formularios incluyen sugerencias de planes y personas conocidas, y confirman los guardados con respuesta háptica. Se conservan las acciones de deslizar, los menús contextuales y el resumen para compartir.
+
 ## Importes y reparto
 
 Los aportes nuevos se guardan y calculan en centavos enteros. Se acepta coma o punto decimal, hasta dos decimales y sin separadores de miles. Los formatos ambiguos y los importes negativos se rechazan sin transformar el texto. El máximo individual es 999.999.999,99.
