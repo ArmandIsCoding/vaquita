@@ -14,6 +14,7 @@ final class Participante: Identifiable {
     var montoPagado: Double
     // Keep the original Double column so existing stores can migrate without losing data.
     var montoCentavos: Int64?
+    var montoUnidades: Int64?
     var evento: Evento?
     
     init(nombre: String, montoPagado: Double = 0.0, evento: Evento? = nil) {
@@ -21,17 +22,21 @@ final class Participante: Identifiable {
         self.montoPagado = montoPagado
         self.evento = evento
         self.montoCentavos = nil
+        self.montoUnidades = nil
     }
-    func centavosValidados() throws -> Int64 {
-        if let montoCentavos {
-            guard (0...Dinero.maximoCentavos).contains(montoCentavos) else { throw ErrorImporte.fueraDeRango }
-            return montoCentavos
+    func unidadesValidadas() throws -> Int64 {
+        let decimales = evento?.decimales ?? 2
+        if let unidades = montoUnidades ?? montoCentavos {
+            guard (0...Dinero.maximo(decimales: decimales)).contains(unidades) else { throw ErrorImporte.fueraDeRango }
+            return unidades
         }
-        return try Dinero.centavosLegados(montoPagado)
+        return try Dinero.unidadesLegadas(montoPagado, decimales: decimales)
     }
 
-    func asignar(centavos: Int64) {
-        montoCentavos = centavos
-        montoPagado = Double(centavos) / 100
+    func asignar(unidades: Int64) {
+        let decimales = evento?.decimales ?? 2
+        montoUnidades = unidades
+        montoCentavos = decimales == 2 ? unidades : nil
+        montoPagado = Double(unidades) / Double(Dinero.factor(decimales: decimales))
     }
 }

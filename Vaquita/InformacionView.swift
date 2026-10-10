@@ -35,7 +35,8 @@ struct InformacionView: View {
 
                 Section {
                     Text("Para editar o eliminar un evento, mantenelo presionado o deslizalo.")
-                    Text("Todos los importes del evento usan la misma moneda, elegida según la región del dispositivo al crearlo. Vaquita no convierte monedas ni realiza pagos.")
+                    Text("La moneda se propone según la región del dispositivo y podés elegir otra al crear el evento. Después se conserva con sus aportes. Vaquita no convierte monedas ni realiza pagos.")
+                    Text("El idioma sigue tus preferencias de iOS: español, inglés o portugués. Podés cambiarlo para Vaquita en Ajustes; la región define el formato de los números.")
                     Text("Revisá los nombres y los importes antes de compartir: la app de destino recibirá ese contenido.")
                 } header: { EncabezadoSeccion(titulo: "A tu manera") }
                 .font(.subheadline)
@@ -85,7 +86,7 @@ struct InformacionView: View {
         .tint(EstiloVaquita.acento)
     }
 
-    private func paso(_ icono: String, titulo: String, texto: String) -> some View {
+    private func paso(_ icono: String, titulo: LocalizedStringKey, texto: LocalizedStringKey) -> some View {
         HStack(alignment: .top, spacing: 14) {
             Image(systemName: icono)
                 .font(.title3).foregroundStyle(EstiloVaquita.acento)

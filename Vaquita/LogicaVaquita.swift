@@ -9,7 +9,7 @@ struct Transaccion: Identifiable {
     let id: ID
     let de: String
     let a: String
-    let centavos: Int64
+    let unidades: Int64
 }
 
 struct CuotaParticipante: Identifiable {
@@ -24,12 +24,12 @@ struct LiquidacionEvento {
     let cuotas: [CuotaParticipante]
     let transacciones: [Transaccion]
 
-    func reparto(moneda: String) -> String {
+    func reparto(moneda: String, decimales: Int = 2) -> String {
         guard let minima = cuotas.map(\.cuota).min(), let maxima = cuotas.map(\.cuota).max() else {
-            return Dinero.formato(0, moneda: moneda)
+            return Dinero.formato(0, moneda: moneda, decimales: decimales)
         }
-        if minima == maxima { return Dinero.formato(minima, moneda: moneda) }
-        return "\(Dinero.formato(minima, moneda: moneda)) a \(Dinero.formato(maxima, moneda: moneda))"
+        if minima == maxima { return Dinero.formato(minima, moneda: moneda, decimales: decimales) }
+        return String(localized: "\(Dinero.formato(minima, moneda: moneda, decimales: decimales)) a \(Dinero.formato(maxima, moneda: moneda, decimales: decimales))")
     }
 }
 
@@ -51,7 +51,7 @@ enum CalculadoraVaquita {
     static func liquidar(participantes: [Participante]) throws -> LiquidacionEvento {
         let ordenados = ordenar(participantes)
         guard !ordenados.isEmpty else { return LiquidacionEvento(total: 0, cuotas: [], transacciones: []) }
-        let aportes = try ordenados.map { try $0.centavosValidados() }
+        let aportes = try ordenados.map { try $0.unidadesValidadas() }
         var total: Int64 = 0
         for aporte in aportes {
             let suma = total.addingReportingOverflow(aporte)
@@ -72,7 +72,7 @@ enum CalculadoraVaquita {
         }
         var balances = cuotas.map { $0.aportado - $0.cuota }
         var transacciones: [Transaccion] = []
-        // Match creditors and debtors in stable order. All arithmetic is in whole cents.
+        // Match creditors and debtors in stable order. All arithmetic is in whole minor units.
         var deudor = 0
         var acreedor = 0
         while deudor < cuotas.count && acreedor < cuotas.count {
@@ -80,7 +80,7 @@ enum CalculadoraVaquita {
             if balances[acreedor] <= 0 { acreedor += 1; continue }
             let monto = min(-balances[deudor], balances[acreedor])
             transacciones.append(Transaccion(id: .init(de: cuotas[deudor].id, a: cuotas[acreedor].id),
-                                             de: cuotas[deudor].nombre, a: cuotas[acreedor].nombre, centavos: monto))
+                                             de: cuotas[deudor].nombre, a: cuotas[acreedor].nombre, unidades: monto))
             balances[deudor] += monto
             balances[acreedor] -= monto
         }
@@ -89,23 +89,25 @@ enum CalculadoraVaquita {
 
     static func generarMensajeParaCompartir(evento: Evento, liquidacion: LiquidacionEvento) -> String {
         let moneda = evento.moneda
-        var mensaje = "🐮 \(evento.nombre)\n\n"
-        mensaje += "Moneda: \(moneda)\nTotal gastado: \(Dinero.formato(liquidacion.total, moneda: moneda))\n"
-        mensaje += "Por persona: \(liquidacion.reparto(moneda: moneda))\n\n"
+        let decimales = evento.decimales
+        var lineas = ["🐮 \(evento.nombre)", "",
+                      String(localized: "Moneda: \(moneda)"),
+                      String(localized: "Total gastado: \(Dinero.formato(liquidacion.total, moneda: moneda, decimales: decimales))"),
+                      String(localized: "Por persona: \(liquidacion.reparto(moneda: moneda, decimales: decimales))"), ""]
         for cuota in liquidacion.cuotas {
-            mensaje += "• \(cuota.nombre): aportó \(Dinero.formato(cuota.aportado, moneda: moneda)); le corresponde \(Dinero.formato(cuota.cuota, moneda: moneda)).\n"
+            lineas.append(String(localized: "• \(cuota.nombre): aportó \(Dinero.formato(cuota.aportado, moneda: moneda, decimales: decimales)); le corresponde \(Dinero.formato(cuota.cuota, moneda: moneda, decimales: decimales))."))
         }
-        mensaje += "\nLiquidación:\n"
+        lineas += ["", String(localized: "Liquidación:")]
         if liquidacion.cuotas.isEmpty {
-            mensaje += "Todavía no hay participantes.\n"
+            lineas.append(String(localized: "Todavía no hay participantes."))
         } else if liquidacion.transacciones.isEmpty {
-            mensaje += "¡Están todos al día!\n"
+            lineas.append(String(localized: "¡Están todos al día!"))
         } else {
             for t in liquidacion.transacciones {
-                mensaje += "• \(t.de) le paga \(Dinero.formato(t.centavos, moneda: moneda)) a \(t.a).\n"
+                lineas.append(String(localized: "• \(t.de) le paga \(Dinero.formato(t.unidades, moneda: moneda, decimales: decimales)) a \(t.a)."))
             }
         }
-        mensaje += "\nLos centavos sobrantes se distribuyen en el orden de la lista.\nGenerado por Vaquita 🐮"
-        return mensaje
+        lineas += ["", String(localized: "El resto se distribuye en la unidad mínima del evento y en el orden de la lista."), String(localized: "Generado por Vaquita 🐮")]
+        return lineas.joined(separator: "\n")
     }
 }

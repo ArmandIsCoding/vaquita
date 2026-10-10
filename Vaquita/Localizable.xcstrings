@@ -1,0 +1,3620 @@
+{
+  "sourceLanguage": "es",
+  "strings": {
+    "%@ a %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ a %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ to %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ a %@"
+          }
+        }
+      }
+    },
+    "%@ paga a %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ paga a %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ pays %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ paga a %@"
+          }
+        }
+      }
+    },
+    "%lld personas": {
+      "localizations": {
+        "es": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld persona"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld personas"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld person"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld people"
+                }
+              }
+            }
+          }
+        },
+        "pt": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld pessoa"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld pessoas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld transferencias": {
+      "localizations": {
+        "es": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transferencia"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transferencias"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transfer"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transfers"
+                }
+              }
+            }
+          }
+        },
+        "pt": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transferência"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld transferências"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "A tu manera": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A tu manera"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make it yours"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do seu jeito"
+          }
+        }
+      }
+    },
+    "Abriendo Vaquita…": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abriendo Vaquita…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening Vaquita…"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrindo o Vaquita…"
+          }
+        }
+      }
+    },
+    "Abrir el reparto de este evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir el reparto de este evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open this event’s split"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir a divisão deste evento"
+          }
+        }
+      }
+    },
+    "Aceptar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceptar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Agregar participante": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agregar participante"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add participant"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar participante"
+          }
+        }
+      }
+    },
+    "Anotá cuánto aportó cada persona.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anotá cuánto aportó cada persona."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter what each person paid."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anote quanto cada pessoa pagou."
+          }
+        }
+      }
+    },
+    "Anotá los aportes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anotá los aportes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record contributions"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anote as contribuições"
+          }
+        }
+      }
+    },
+    "Aportó": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aportó"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paid"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagou"
+          }
+        }
+      }
+    },
+    "Armá el plan": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Armá el plan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make a plan"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Combine o programa"
+          }
+        }
+      }
+    },
+    "Asado": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asado"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BBQ"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Churrasco"
+          }
+        }
+      }
+    },
+    "Así de simple": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Así de simple"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That simple"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simples assim"
+          }
+        }
+      }
+    },
+    "Ayuda y privacidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayuda y privacidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help & privacy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajuda e privacidade"
+          }
+        }
+      }
+    },
+    "Borrar búsqueda": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Borrar búsqueda"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear search"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpar busca"
+          }
+        }
+      }
+    },
+    "Buscar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar"
+          }
+        }
+      }
+    },
+    "Buscar moneda o código": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar moneda o código"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search currency or code"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar moeda ou código"
+          }
+        }
+      }
+    },
+    "Buscar un evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar un evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search events"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar um evento"
+          }
+        }
+      }
+    },
+    "CUENTAS CLARAS, BUENOS MOMENTOS": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CUENTAS CLARAS, BUENOS MOMENTOS"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CLEAR ACCOUNTS, GOOD TIMES"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CONTAS EM DIA, BONS MOMENTOS"
+          }
+        }
+      }
+    },
+    "Cada aporte cuenta.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada aporte cuenta."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every contribution counts."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada contribuição conta."
+          }
+        }
+      }
+    },
+    "Cada evento, sus cuentas. Todo bien organizado.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada evento, sus cuentas. Todo bien organizado."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A place for every plan and its expenses."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cada evento com suas contas. Tudo organizado."
+          }
+        }
+      }
+    },
+    "Cambios en esta política": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cambios en esta política"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes to this policy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alterações nesta política"
+          }
+        }
+      }
+    },
+    "Cancelar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        }
+      }
+    },
+    "Compartir": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartilhar"
+          }
+        }
+      }
+    },
+    "Compartir\nhace bien.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartir\nhace bien."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Better\ntogether."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compartilhar\nfaz bem."
+          }
+        }
+      }
+    },
+    "Con estas transferencias, las cuentas quedan parejas.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Con estas transferencias, las cuentas quedan parejas."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These payments settle everyone’s share."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Com estas transferências, as contas ficam em dia."
+          }
+        }
+      }
+    },
+    "Conservación, eliminación y copias de seguridad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conservación, eliminación y copias de seguridad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retention, deletion and backups"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Armazenamento, exclusão e backups"
+          }
+        }
+      }
+    },
+    "Contactar por privacidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contactar por privacidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy contact"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contato sobre privacidade"
+          }
+        }
+      }
+    },
+    "Contacto y soporte": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contacto y soporte"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contact and support"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contato e suporte"
+          }
+        }
+      }
+    },
+    "Crear": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crear"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Criar"
+          }
+        }
+      }
+    },
+    "Creá un evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creá un evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create an event"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crie um evento"
+          }
+        }
+      }
+    },
+    "Creá un evento para la ocasión.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creá un evento para la ocasión."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create an event for the occasion."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crie um evento para a ocasião."
+          }
+        }
+      }
+    },
+    "Cuando decidís compartir": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando decidís compartir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you choose to share"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando você decide compartilhar"
+          }
+        }
+      }
+    },
+    "Cumpleaños": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cumpleaños"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birthday"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aniversário"
+          }
+        }
+      }
+    },
+    "Dale un nombre. Las cuentas van por nuestra parte.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dale un nombre. Las cuentas van por nuestra parte."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Give it a name. We’ll handle the split."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dê um nome ao programa. As contas ficam com a gente."
+          }
+        }
+      }
+    },
+    "Datos guardados en tu dispositivo": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datos guardados en tu dispositivo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data stored on your device"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dados salvos no seu dispositivo"
+          }
+        }
+      }
+    },
+    "Dejalo en cero si todavía no pagó.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dejalo en cero si todavía no pagó."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leave it at zero if they haven’t paid yet."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deixe em zero se a pessoa ainda não pagou."
+          }
+        }
+      }
+    },
+    "Disfrutá el plan. Las cuentas, con Vaquita.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disfrutá el plan. Las cuentas, con Vaquita."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enjoy the moment. Leave the split to Vaquita."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aproveite o programa. As contas ficam com o Vaquita."
+          }
+        }
+      }
+    },
+    "Editar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar"
+          }
+        }
+      }
+    },
+    "Editar aporte": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar aporte"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit contribution"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar contribuição"
+          }
+        }
+      }
+    },
+    "Editar evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit event"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar evento"
+          }
+        }
+      }
+    },
+    "Editar nombre o aporte": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar nombre o aporte"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit name or contribution"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar nome ou contribuição"
+          }
+        }
+      }
+    },
+    "Ej. Asado del domingo": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ej. Asado del domingo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E.g. Sunday BBQ"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ex.: Churrasco de domingo"
+          }
+        }
+      }
+    },
+    "El evento se conservó. Comprobá el espacio disponible y volvé a intentar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El evento se conservó. Comprobá el espacio disponible y volvé a intentar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your event was kept. Check available storage and try again."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O evento foi mantido. Confira o espaço disponível e tente novamente."
+          }
+        }
+      }
+    },
+    "El idioma sigue tus preferencias de iOS: español, inglés o portugués. Podés cambiarlo para Vaquita en Ajustes; la región define el formato de los números.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El idioma sigue tus preferencias de iOS: español, inglés o portugués. Podés cambiarlo para Vaquita en Ajustes; la región define el formato de los números."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The language follows your iOS preferences: Spanish, English or Portuguese. You can change it for Vaquita in Settings; your region determines number formatting."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O idioma segue suas preferências do iOS: espanhol, inglês ou português. Você pode alterá-lo para o Vaquita nos Ajustes; a região define o formato dos números."
+          }
+        }
+      }
+    },
+    "El importe es demasiado grande. Debe ser menor a mil millones por persona.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El importe es demasiado grande. Debe ser menor a mil millones por persona."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount is too large. It must be less than one billion per person."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O valor é muito alto. Deve ser menor que um bilhão por pessoa."
+          }
+        }
+      }
+    },
+    "El plan está.\nAhora falta tu gente.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El plan está.\nAhora falta tu gente."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The plan is set.\nBring your people."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O programa está pronto.\nSó falta a sua turma."
+          }
+        }
+      }
+    },
+    "El reparto": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El reparto"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The split"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A divisão"
+          }
+        }
+      }
+    },
+    "El resto se distribuye en la unidad mínima del evento y en el orden de la lista.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El resto se distribuye en la unidad mínima del evento y en el orden de la lista."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Any remainder is shared in the event’s smallest currency unit, in list order."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O restante é distribuído na menor unidade monetária do evento, seguindo a ordem da lista."
+          }
+        }
+      }
+    },
+    "El resto se distribuye en la unidad mínima del evento y en el orden de la lista. Cada persona tiene su importe exacto indicado arriba.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El resto se distribuye en la unidad mínima del evento y en el orden de la lista. Cada persona tiene su importe exacto indicado arriba."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Any remainder is shared in the event’s smallest currency unit, in list order. Each person’s exact share is shown above."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O restante é distribuído na menor unidade monetária do evento, seguindo a ordem da lista. O valor exato de cada pessoa está indicado acima."
+          }
+        }
+      }
+    },
+    "Elegida según tu región. Podés cambiarla para este plan.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegida según tu región. Podés cambiarla para este plan."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on your region. You can change it for this plan."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolhida pela sua região. Você pode alterá-la para este programa."
+          }
+        }
+      }
+    },
+    "Eliminar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir"
+          }
+        }
+      }
+    },
+    "En casa": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En casa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At home"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em casa"
+          }
+        }
+      }
+    },
+    "Entre todos, más fácil.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entre todos, más fácil."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Easier together."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juntos fica mais fácil."
+          }
+        }
+      }
+    },
+    "Escapada": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escapada"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Getaway"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viagem"
+          }
+        }
+      }
+    },
+    "Escribinos": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escribinos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Write to us"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fale com a gente"
+          }
+        }
+      }
+    },
+    "Esta página se actualizará si cambian las funciones o el tratamiento de los datos. La fecha de actualización permite identificar la versión vigente.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta página se actualizará si cambian las funciones o el tratamiento de los datos. La fecha de actualización permite identificar la versión vigente."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This page will be updated if features or data handling change. The update date identifies the current version."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta página será atualizada se as funções ou o tratamento dos dados mudarem. A data de atualização identifica a versão em vigor."
+          }
+        }
+      }
+    },
+    "Eventos": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eventos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Events"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eventos"
+          }
+        }
+      }
+    },
+    "Gastos anteriores": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos anteriores"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous expenses"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gastos anteriores"
+          }
+        }
+      }
+    },
+    "Generado por Vaquita 🐮": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generado por Vaquita 🐮"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Made with Vaquita 🐮"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feito com Vaquita 🐮"
+          }
+        }
+      }
+    },
+    "Guardar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvar"
+          }
+        }
+      }
+    },
+    "Hay importes que necesitan revisión. Tocá cada participante señalado para corregirlos.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hay importes que necesitan revisión. Tocá cada participante señalado para corregirlos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Some amounts need a review. Tap each flagged participant to correct them."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alguns valores precisam de revisão. Toque em cada participante sinalizado para corrigi-los."
+          }
+        }
+      }
+    },
+    "Importes en %@, con hasta %lld decimales y sin separadores de miles.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importes en %@, con hasta %lld decimales y sin separadores de miles."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amounts in %@, with up to %lld decimal places and no thousands separators."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valores em %@, com até %lld casas decimais e sem separadores de milhares."
+          }
+        }
+      }
+    },
+    "Importes en %@, sin decimales ni separadores de miles.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importes en %@, sin decimales ni separadores de miles."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amounts in %@, with no decimal places or thousands separators."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valores em %@, sem casas decimais nem separadores de milhares."
+          }
+        }
+      }
+    },
+    "Ingresá cuánto pagó cada persona. Usá nombres o apodos diferentes. Para cambiar un aporte, tocá a la persona.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingresá cuánto pagó cada persona. Usá nombres o apodos diferentes. Para cambiar un aporte, tocá a la persona."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter what each person paid. Use different names or nicknames. To change a contribution, tap the person."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informe quanto cada pessoa pagou. Use nomes ou apelidos diferentes. Para alterar uma contribuição, toque na pessoa."
+          }
+        }
+      }
+    },
+    "La función Compartir prepara un texto con el evento, los nombres de los participantes, sus aportes, las cuotas y las transferencias calculadas. Solo se comparte cuando vos elegís un destino y confirmás el envío. Revisá el contenido antes de compartirlo. La aplicación o servicio elegido aplicará su propia política de privacidad.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La función Compartir prepara un texto con el evento, los nombres de los participantes, sus aportes, las cuotas y las transferencias calculadas. Solo se comparte cuando vos elegís un destino y confirmás el envío. Revisá el contenido antes de compartirlo. La aplicación o servicio elegido aplicará su propia política de privacidad."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share prepares a text containing the event, participant names, contributions, shares and calculated transfers. It is only shared when you choose a destination and confirm sending. Review the content before sharing. The chosen app or service applies its own privacy policy."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A função Compartilhar prepara um texto com o evento, os nomes dos participantes, suas contribuições, cotas e transferências calculadas. Ele só é compartilhado quando você escolhe um destino e confirma o envio. Revise o conteúdo antes de compartilhar. O aplicativo ou serviço escolhido aplicará sua própria política de privacidade."
+          }
+        }
+      }
+    },
+    "La moneda se conserva para mantener los aportes originales.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La moneda se conserva para mantener los aportes originales."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The currency stays the same to preserve the original contributions."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A moeda é mantida para preservar as contribuições originais."
+          }
+        }
+      }
+    },
+    "La moneda se propone según la región del dispositivo y podés elegir otra al crear el evento. Después se conserva con sus aportes. Vaquita no convierte monedas ni realiza pagos.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La moneda se propone según la región del dispositivo y podés elegir otra al crear el evento. Después se conserva con sus aportes. Vaquita no convierte monedas ni realiza pagos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The suggested currency follows your device’s region, and you can choose another when creating an event. It then stays with that event’s contributions. Vaquita does not convert currencies or make payments."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A moeda sugerida segue a região do dispositivo, e você pode escolher outra ao criar o evento. Depois, ela é mantida com as contribuições. O Vaquita não converte moedas nem realiza pagamentos."
+          }
+        }
+      }
+    },
+    "La vaquita": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La vaquita"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The group"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A vaquinha"
+          }
+        }
+      }
+    },
+    "Le corresponde": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le corresponde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua parte"
+          }
+        }
+      }
+    },
+    "Limpiar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpiar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpar"
+          }
+        }
+      }
+    },
+    "Limpiar participantes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpiar participantes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear participants"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpar participantes"
+          }
+        }
+      }
+    },
+    "Liquidación:": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Liquidación:"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settlement:"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acerto:"
+          }
+        }
+      }
+    },
+    "Listo": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Listo para sumar gente": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listo para sumar gente"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready for your people"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronto para reunir a turma"
+          }
+        }
+      }
+    },
+    "Los aportes están equilibrados. A disfrutar del plan.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los aportes están equilibrados. A disfrutar del plan."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everyone has paid their share. Enjoy the moment."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As contribuições estão equilibradas. Aproveite o programa."
+          }
+        }
+      }
+    },
+    "Los buenos momentos se comparten.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los buenos momentos se comparten."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good times are made to be shared."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os bons momentos são compartilhados."
+          }
+        }
+      }
+    },
+    "Los datos permanecen en la aplicación hasta que los eliminás. Podés borrar participantes, limpiar un evento o eliminarlo por completo. Las sugerencias desaparecen cuando ya no quedan participantes guardados con ese nombre. La app no ofrece sincronización propia entre dispositivos.\nEl sistema operativo puede incluir los datos de la app en las copias de seguridad del dispositivo, según tus ajustes. Esas copias y su eliminación se gestionan desde las herramientas de Apple. Desinstalar la app elimina sus datos locales, pero no los mensajes ya compartidos ni necesariamente las copias de seguridad anteriores.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los datos permanecen en la aplicación hasta que los eliminás. Podés borrar participantes, limpiar un evento o eliminarlo por completo. Las sugerencias desaparecen cuando ya no quedan participantes guardados con ese nombre. La app no ofrece sincronización propia entre dispositivos.\nEl sistema operativo puede incluir los datos de la app en las copias de seguridad del dispositivo, según tus ajustes. Esas copias y su eliminación se gestionan desde las herramientas de Apple. Desinstalar la app elimina sus datos locales, pero no los mensajes ya compartidos ni necesariamente las copias de seguridad anteriores."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data remains in the app until you delete it. You can delete participants, clear an event or delete it entirely. Name suggestions disappear when there are no saved participants with that name. The app does not provide its own syncing between devices.\nDepending on your settings, the operating system may include app data in device backups. Those backups and their deletion are managed through Apple’s tools. Uninstalling the app deletes its local data, but not previously shared messages or necessarily earlier backups."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os dados permanecem no aplicativo até você excluí-los. Você pode excluir participantes, limpar um evento ou excluí-lo por completo. As sugestões desaparecem quando não há mais participantes salvos com aquele nome. O app não oferece sincronização própria entre dispositivos.\nO sistema operacional pode incluir os dados do app nos backups do dispositivo, conforme seus ajustes. Esses backups e sua exclusão são gerenciados pelas ferramentas da Apple. Desinstalar o app exclui seus dados locais, mas não as mensagens já compartilhadas nem necessariamente os backups anteriores."
+          }
+        }
+      }
+    },
+    "Los nombres de los eventos, sus fechas, los nombres o apodos de los participantes, la moneda y los importes se guardan localmente en la aplicación. Vaquita no los envía a servidores del desarrollador. Las sugerencias de nombres provienen de tus participantes guardados, no de la agenda de contactos.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los nombres de los eventos, sus fechas, los nombres o apodos de los participantes, la moneda y los importes se guardan localmente en la aplicación. Vaquita no los envía a servidores del desarrollador. Las sugerencias de nombres provienen de tus participantes guardados, no de la agenda de contactos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event names and dates, participants’ names or nicknames, currencies and amounts are stored locally in the app. Vaquita does not send them to the developer’s servers. Name suggestions come from saved participants, not your contacts."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os nomes e as datas dos eventos, os nomes ou apelidos dos participantes, a moeda e os valores são salvos localmente no aplicativo. O Vaquita não os envia a servidores do desenvolvedor. As sugestões de nomes vêm dos participantes salvos, não da agenda de contatos."
+          }
+        }
+      }
+    },
+    "Los participantes se conservaron. Comprobá el espacio disponible y volvé a intentar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los participantes se conservaron. Comprobá el espacio disponible y volvé a intentar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your participants were kept. Check available storage and try again."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os participantes foram mantidos. Confira o espaço disponível e tente novamente."
+          }
+        }
+      }
+    },
+    "MONEDA DEL EVENTO": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MONEDA DEL EVENTO"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "EVENT CURRENCY"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MOEDA DO EVENTO"
+          }
+        }
+      }
+    },
+    "Mirá quién le paga a quién.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mirá quién le paga a quién."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See who pays whom."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veja quem paga a quem."
+          }
+        }
+      }
+    },
+    "Moneda del evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moneda del evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event currency"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moeda do evento"
+          }
+        }
+      }
+    },
+    "Moneda del evento: %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moneda del evento: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event currency: %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moeda do evento: %@"
+          }
+        }
+      }
+    },
+    "Moneda: %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moneda: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Currency: %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moeda: %@"
+          }
+        }
+      }
+    },
+    "Monto aportado": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monto aportado"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount paid"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valor pago"
+          }
+        }
+      }
+    },
+    "Más opciones": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más opciones"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More options"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais opções"
+          }
+        }
+      }
+    },
+    "NOMBRE DEL EVENTO": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOMBRE DEL EVENTO"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "EVENT NAME"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NOME DO EVENTO"
+          }
+        }
+      }
+    },
+    "No hay participantes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay participantes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No participants yet"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhum participante"
+          }
+        }
+      }
+    },
+    "No pudimos abrir tus datos": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No pudimos abrir tus datos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We couldn’t open your data"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível abrir seus dados"
+          }
+        }
+      }
+    },
+    "No se guardaron los cambios. Comprobá el espacio disponible y volvé a tocar Guardar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se guardaron los cambios. Comprobá el espacio disponible y volvé a tocar Guardar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your changes weren’t saved. Check available storage and tap Save again."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As alterações não foram salvas. Confira o espaço disponível e toque em Salvar novamente."
+          }
+        }
+      }
+    },
+    "No se guardaron los cambios. Comprobá que haya espacio disponible y volvé a tocar Guardar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se guardaron los cambios. Comprobá que haya espacio disponible y volvé a tocar Guardar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your changes weren’t saved. Check available storage and tap Save again."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As alterações não foram salvas. Confira o espaço disponível e toque em Salvar novamente."
+          }
+        }
+      }
+    },
+    "No se pudo eliminar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se pudo eliminar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t delete"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível excluir"
+          }
+        }
+      }
+    },
+    "No se pudo guardar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se pudo guardar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn’t save"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível salvar"
+          }
+        }
+      }
+    },
+    "Nombre": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome"
+          }
+        }
+      }
+    },
+    "Nombre del evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre del evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Event name"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome do evento"
+          }
+        }
+      }
+    },
+    "Nombre o apodo": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nombre o apodo"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name or nickname"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome ou apelido"
+          }
+        }
+      }
+    },
+    "Nuevo evento": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuevo evento"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New event"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novo evento"
+          }
+        }
+      }
+    },
+    "PERSONAS CONOCIDAS": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PERSONAS CONOCIDAS"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FAMILIAR FACES"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PESSOAS CONHECIDAS"
+          }
+        }
+      }
+    },
+    "Paga %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paga %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pays %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paga %@"
+          }
+        }
+      }
+    },
+    "Para editar o eliminar un evento, mantenelo presionado o deslizalo.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para editar o eliminar un evento, mantenelo presionado o deslizalo."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To edit or delete an event, touch and hold it or swipe it."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para editar ou excluir um evento, mantenha-o pressionado ou deslize."
+          }
+        }
+      }
+    },
+    "Para informar un problema, indicá la versión de Vaquita y de iOS, y los pasos para reproducirlo. Evitá enviar nombres o gastos reales.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para informar un problema, indicá la versión de Vaquita y de iOS, y los pasos para reproducirlo. Evitá enviar nombres o gastos reales."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To report a problem, include your Vaquita and iOS versions and the steps to reproduce it. Avoid sending real names or expenses."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para informar um problema, indique as versões do Vaquita e do iOS e os passos para reproduzi-lo. Evite enviar nomes ou gastos reais."
+          }
+        }
+      }
+    },
+    "Política de privacidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de privacidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy policy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Política de privacidade"
+          }
+        }
+      }
+    },
+    "Poné un nombre al plan y agregá a todas las personas, incluso a quienes no aportaron.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poné un nombre al plan y agregá a todas las personas, incluso a quienes no aportaron."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name your plan and add everyone, including those who haven’t paid anything."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dê um nome ao programa e adicione todas as pessoas, inclusive quem não contribuiu."
+          }
+        }
+      }
+    },
+    "Por persona": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por persona"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per person"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por pessoa"
+          }
+        }
+      }
+    },
+    "Por persona: %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por persona: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per person: %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por pessoa: %@"
+          }
+        }
+      }
+    },
+    "Privacidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacidade"
+          }
+        }
+      }
+    },
+    "Recibe %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recibe %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Receives %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recebe %@"
+          }
+        }
+      }
+    },
+    "Reintentar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reintentar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tentar novamente"
+          }
+        }
+      }
+    },
+    "Repartí sin vueltas": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repartí sin vueltas"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Split with ease"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Divida sem complicação"
+          }
+        }
+      }
+    },
+    "Repartí y compartí": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repartí y compartí"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Split and share"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Divida e compartilhe"
+          }
+        }
+      }
+    },
+    "Revisar importes": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisar importes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review amounts"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisar valores"
+          }
+        }
+      }
+    },
+    "Revisá el importe y los decimales de esta moneda. Usá un número positivo o cero, sin separadores de miles. Podés usar coma o punto decimal.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisá el importe y los decimales de esta moneda. Usá un número positivo o cero, sin separadores de miles. Podés usar coma o punto decimal."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the amount and this currency’s decimal places. Use a positive number or zero, without thousands separators. You can use a comma or a decimal point."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confira o valor e as casas decimais desta moeda. Use um número positivo ou zero, sem separadores de milhares. Você pode usar vírgula ou ponto decimal."
+          }
+        }
+      }
+    },
+    "Revisá este importe": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisá este importe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check this amount"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revise este valor"
+          }
+        }
+      }
+    },
+    "Revisá los nombres y los importes antes de compartir: la app de destino recibirá ese contenido.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisá los nombres y los importes antes de compartir: la app de destino recibirá ese contenido."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review names and amounts before sharing: the destination app will receive this content."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revise os nomes e os valores antes de compartilhar: o aplicativo de destino receberá esse conteúdo."
+          }
+        }
+      }
+    },
+    "Se eliminarán todos los participantes de este evento.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se eliminarán todos los participantes de este evento."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All participants in this event will be deleted."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todos os participantes deste evento serão excluídos."
+          }
+        }
+      }
+    },
+    "Se eliminarán “%@” y todos sus participantes.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se eliminarán “%@” y todos sus participantes."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@” and all its participants will be deleted."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“%@” e todos os seus participantes serão excluídos."
+          }
+        }
+      }
+    },
+    "Si enviás un correo de soporte, el desarrollador recibirá tu dirección y el contenido que incluyas para responder la consulta. No envíes nombres, importes u otra información sensible que no sea necesaria. El correo se procesa mediante el servicio de correo utilizado; no se incorpora a los eventos de Vaquita.\nPara consultas de privacidad o para solicitar la eliminación de correos de soporte, escribí a armando.meabe@icloud.com.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si enviás un correo de soporte, el desarrollador recibirá tu dirección y el contenido que incluyas para responder la consulta. No envíes nombres, importes u otra información sensible que no sea necesaria. El correo se procesa mediante el servicio de correo utilizado; no se incorpora a los eventos de Vaquita.\nPara consultas de privacidad o para solicitar la eliminación de correos de soporte, escribí a armando.meabe@icloud.com."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you send a support email, the developer will receive your address and the content you include to answer your question. Do not send names, amounts or other sensitive information that is not necessary. Email is processed by the email service used; it is not added to Vaquita events.\nFor privacy questions or to request deletion of support emails, write to armando.meabe@icloud.com."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se você enviar um e-mail de suporte, o desenvolvedor receberá seu endereço e o conteúdo incluído para responder à consulta. Não envie nomes, valores ou outras informações sensíveis desnecessárias. O e-mail é processado pelo serviço de e-mail utilizado; ele não é incorporado aos eventos do Vaquita.\nPara dúvidas sobre privacidade ou para solicitar a exclusão de e-mails de suporte, escreva para armando.meabe@icloud.com."
+          }
+        }
+      }
+    },
+    "Sin seguimiento ni publicidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin seguimiento ni publicidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No tracking or advertising"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem rastreamento nem publicidade"
+          }
+        }
+      }
+    },
+    "Su aporte está al día": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Su aporte está al día"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All settled up"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contribuição em dia"
+          }
+        }
+      }
+    },
+    "Sumar": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar"
+          }
+        }
+      }
+    },
+    "Sumar persona": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumar persona"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add person"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar pessoa"
+          }
+        }
+      }
+    },
+    "Sumá a todas las personas, incluso a quienes no pagaron. Vaquita hace el reparto.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumá a todas las personas, incluso a quienes no pagaron. Vaquita hace el reparto."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add everyone, including those who haven’t paid. Vaquita will work out the split."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione todas as pessoas, inclusive quem não pagou. O Vaquita faz a divisão."
+          }
+        }
+      }
+    },
+    "Sumá a tu gente": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumá a tu gente"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bring your people"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reúna a sua turma"
+          }
+        }
+      }
+    },
+    "Sumá también a quienes no aportaron: el gasto se reparte entre todos.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumá también a quienes no aportaron: el gasto se reparte entre todos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Include those who haven’t paid: expenses are split among everyone."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inclua também quem não contribuiu: o gasto é dividido entre todos."
+          }
+        }
+      }
+    },
+    "Tocá una persona para editar su aporte.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tocá una persona para editar su aporte."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap a person to edit their contribution."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toque em uma pessoa para editar sua contribuição."
+          }
+        }
+      }
+    },
+    "Todavía no hay participantes.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todavía no hay participantes."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No participants yet."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não há participantes."
+          }
+        }
+      }
+    },
+    "Total gastado": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gastado"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total spent"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gasto"
+          }
+        }
+      }
+    },
+    "Total gastado, %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gastado, %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total spent, %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gasto, %@"
+          }
+        }
+      }
+    },
+    "Total gastado: %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gastado: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total spent: %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total gasto: %@"
+          }
+        }
+      }
+    },
+    "Total · %@": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total · %@"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total · %@"
+          }
+        }
+      }
+    },
+    "Tu privacidad": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu privacidad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your privacy"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sua privacidade"
+          }
+        }
+      }
+    },
+    "Tu próxima juntada\nempieza acá.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu próxima juntada\nempieza acá."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your next get-together\nstarts here."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seu próximo encontro\ncomeça aqui."
+          }
+        }
+      }
+    },
+    "Tus datos no fueron borrados. Comprobá que haya espacio disponible y volvé a intentar.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus datos no fueron borrados. Comprobá que haya espacio disponible y volvé a intentar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your data hasn’t been deleted. Check available storage and try again."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seus dados não foram apagados. Confira o espaço disponível e tente novamente."
+          }
+        }
+      }
+    },
+    "Tus datos se guardan en tu dispositivo.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus datos se guardan en tu dispositivo."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your data stays on your device."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seus dados ficam no seu dispositivo."
+          }
+        }
+      }
+    },
+    "Tus eventos": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus eventos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your events"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seus eventos"
+          }
+        }
+      }
+    },
+    "UN POCO DE INSPIRACIÓN": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UN POCO DE INSPIRACIÓN"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A LITTLE INSPIRATION"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UM POUCO DE INSPIRAÇÃO"
+          }
+        }
+      }
+    },
+    "Un asado, un viaje o un café. Hacé una vaquita y que nada quede pendiente.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un asado, un viaje o un café. Hacé una vaquita y que nada quede pendiente."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A BBQ, a trip or a coffee. Start a Vaquita and settle up with ease."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um churrasco, uma viagem ou um café. Faça uma vaquinha e deixe tudo em dia."
+          }
+        }
+      }
+    },
+    "Un buen plan. Las cuentas claras.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un buen plan. Las cuentas claras."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Good plans. Clear accounts."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um bom programa. Contas em dia."
+          }
+        }
+      }
+    },
+    "Un nombre para\nese buen momento.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un nombre para\nese buen momento."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A name for\na good time."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um nome para\nesse bom momento."
+          }
+        }
+      }
+    },
+    "Uno más en el plan.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uno más en el plan."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One more for the plan."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais alguém na turma."
+          }
+        }
+      }
+    },
+    "Vaquita no incluye anuncios, herramientas de analítica de terceros ni seguimiento entre aplicaciones. No solicita acceso a contactos, ubicación, cámara ni micrófono. El desarrollador no vende los datos de tus eventos.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita no incluye anuncios, herramientas de analítica de terceros ni seguimiento entre aplicaciones. No solicita acceso a contactos, ubicación, cámara ni micrófono. El desarrollador no vende los datos de tus eventos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita has no advertising, third-party analytics tools or cross-app tracking. It does not request access to contacts, location, camera or microphone. The developer does not sell your event data."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Vaquita não inclui anúncios, ferramentas de análise de terceiros nem rastreamento entre aplicativos. Não solicita acesso a contatos, localização, câmera nem microfone. O desenvolvedor não vende os dados dos seus eventos."
+          }
+        }
+      }
+    },
+    "Vaquita te muestra quién le paga a quién. Compartí el resumen para que todos tengan las cuentas claras.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita te muestra quién le paga a quién. Compartí el resumen para que todos tengan las cuentas claras."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita shows who pays whom. Share the summary so everyone knows where things stand."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Vaquita mostra quem paga a quem. Compartilhe o resumo para que todos saibam como ficaram as contas."
+          }
+        }
+      }
+    },
+    "Vaquita, eventos": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita, eventos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita, events"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaquita, eventos"
+          }
+        }
+      }
+    },
+    "Ver política en la web": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ver política en la web"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View policy on the web"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ver política na web"
+          }
+        }
+      }
+    },
+    "Versión %@ · Hecha por Armando Meabe": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versión %@ · Hecha por Armando Meabe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@ · Made by Armando Meabe"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versão %@ · Feito por Armando Meabe"
+          }
+        }
+      }
+    },
+    "Ya hay una persona con ese nombre en este evento. Agregá un apellido o apodo para distinguirlas.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya hay una persona con ese nombre en este evento. Agregá un apellido o apodo para distinguirlas."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There’s already someone with that name in this event. Add a surname or nickname to tell them apart."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Já existe uma pessoa com esse nome neste evento. Adicione um sobrenome ou apelido para diferenciá-las."
+          }
+        }
+      }
+    },
+    "vaquita": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vaquita"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vaquita"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vaquita"
+          }
+        }
+      }
+    },
+    "¡Están todos al día!": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Están todos al día!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everyone’s settled up!"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Está tudo em dia!"
+          }
+        }
+      }
+    },
+    "¿Borrar los participantes?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Borrar los participantes?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all participants?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apagar os participantes?"
+          }
+        }
+      }
+    },
+    "¿CUÁNTO APORTÓ?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿CUÁNTO APORTÓ?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HOW MUCH DID THEY PAY?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QUANTO PAGOU?"
+          }
+        }
+      }
+    },
+    "¿Cuál es el plan?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Cuál es el plan?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What’s the plan?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qual é o programa?"
+          }
+        }
+      }
+    },
+    "¿Cómo se paga?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Cómo se paga?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who pays whom?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quem paga a quem?"
+          }
+        }
+      }
+    },
+    "¿Eliminar este evento?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Eliminar este evento?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this event?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir este evento?"
+          }
+        }
+      }
+    },
+    "¿QUIÉN SE SUMA?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿QUIÉN SE SUMA?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WHO’S JOINING?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QUEM VAI PARTICIPAR?"
+          }
+        }
+      }
+    },
+    "¿Te damos una mano?": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Te damos una mano?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Need a hand?"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precisa de uma mão?"
+          }
+        }
+      }
+    },
+    "Última actualización: 5 de octubre de 2026\nVaquita es una aplicación desarrollada por Armando Meabe para organizar eventos, registrar aportes y calcular cómo repartir gastos. No requiere una cuenta y no realiza pagos ni transferencias bancarias.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última actualización: 5 de octubre de 2026\nVaquita es una aplicación desarrollada por Armando Meabe para organizar eventos, registrar aportes y calcular cómo repartir gastos. No requiere una cuenta y no realiza pagos ni transferencias bancarias."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last updated: October 5, 2026\nVaquita is an app developed by Armando Meabe to organize events, record contributions and calculate how to split expenses. It does not require an account and does not make payments or bank transfers."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última atualização: 5 de outubro de 2026\nO Vaquita é um aplicativo desenvolvido por Armando Meabe para organizar eventos, registrar contribuições e calcular como dividir gastos. Não exige uma conta e não realiza pagamentos nem transferências bancárias."
+          }
+        }
+      }
+    },
+    "• %@ le paga %@ a %@.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %@ le paga %@ a %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %1$@ pays %2$@ to %3$@."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %1$@ paga %2$@ a %3$@."
+          }
+        }
+      }
+    },
+    "• %@: aportó %@; le corresponde %@.": {
+      "localizations": {
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %@: aportó %@; le corresponde %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %@: paid %@; their share is %@."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "• %@: pagou %@; sua parte é %@."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

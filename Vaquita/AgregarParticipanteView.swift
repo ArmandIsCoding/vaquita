@@ -21,7 +21,7 @@ struct AgregarParticipanteView: View {
         self.participanteAEditar = participanteAEditar
         _nombre = State(initialValue: participanteAEditar?.nombre ?? "")
         _montoTexto = State(initialValue: participanteAEditar.map { persona in
-            (try? persona.centavosValidados()).map { Dinero.textoEditable($0) } ?? String(persona.montoPagado)
+            (try? persona.unidadesValidadas()).map { Dinero.textoEditable($0, decimales: evento.decimales) } ?? String(persona.montoPagado)
         } ?? "")
     }
 
@@ -60,7 +60,7 @@ struct AgregarParticipanteView: View {
                         HStack(spacing: 16) {
                             AvatarPersona(nombre: nombre.isEmpty ? "?" : nombre, dimension: 62)
                             VStack(alignment: .leading, spacing: 6) {
-                                Text(participanteAEditar == nil ? "Uno más en el plan." : "Cada aporte cuenta.")
+                                Text(participanteAEditar == nil ? String(localized: "Uno más en el plan.") : String(localized: "Cada aporte cuenta."))
                                     .font(.system(.title2, design: .rounded, weight: .bold))
                                     .foregroundStyle(EstiloVaquita.tinta)
                                 Text(evento.nombre)
@@ -118,8 +118,8 @@ struct AgregarParticipanteView: View {
                             Spacer()
                             EtiquetaCapsula(texto: evento.moneda)
                         }
-                        TextField("0,00", text: $montoTexto,
-                                  prompt: Text("0,00").foregroundStyle(EstiloVaquita.secundario))
+                        TextField(Dinero.textoEditable(0, decimales: evento.decimales), text: $montoTexto,
+                                  prompt: Text(Dinero.textoEditable(0, decimales: evento.decimales)).foregroundStyle(EstiloVaquita.secundario))
                             .font(.system(.largeTitle, design: .rounded, weight: .bold))
                             .foregroundStyle(EstiloVaquita.acento)
                             .keyboardType(.decimalPad)
@@ -134,7 +134,9 @@ struct AgregarParticipanteView: View {
 
                     Label("Sumá también a quienes no aportaron: el gasto se reparte entre todos.", systemImage: "person.2")
                         .font(.footnote).foregroundStyle(EstiloVaquita.secundario)
-                    Text("Importes en \(evento.moneda), sin separadores de miles y con hasta dos decimales.")
+                    Text(evento.decimales == 0
+                         ? String(localized: "Importes en \(evento.moneda), sin decimales ni separadores de miles.")
+                         : String(localized: "Importes en \(evento.moneda), con hasta \(evento.decimales) decimales y sin separadores de miles."))
                         .font(.footnote).foregroundStyle(EstiloVaquita.secundario)
                 }
                 .foregroundStyle(EstiloVaquita.tinta)
@@ -147,7 +149,7 @@ struct AgregarParticipanteView: View {
             .alert("No se pudo guardar", isPresented: Binding(get: { errorMensaje != nil }, set: { if !$0 { errorMensaje = nil } })) {
                 Button("Aceptar", role: .cancel) { }
             } message: { Text(errorMensaje ?? "") }
-            .navigationTitle(participanteAEditar == nil ? "Sumar persona" : "Editar aporte")
+            .navigationTitle(participanteAEditar == nil ? String(localized: "Sumar persona") : String(localized: "Editar aporte"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -179,21 +181,21 @@ struct AgregarParticipanteView: View {
         guard !nombreLimpio.isEmpty else { return }
         campoEnfocado = nil
         do {
-            let centavos = try Dinero.centavos(desde: montoTexto)
+            let unidades = try Dinero.unidades(desde: montoTexto, decimales: evento.decimales)
             guard !evento.participantes.contains(where: {
                 $0.persistentModelID != participanteAEditar?.persistentModelID &&
                 CalculadoraVaquita.claveNombre($0.nombre) == CalculadoraVaquita.claveNombre(nombreLimpio)
             }) else {
-                errorMensaje = "Ya hay una persona con ese nombre en este evento. Agregá un apellido o apodo para distinguirlas."
+                errorMensaje = String(localized: "Ya hay una persona con ese nombre en este evento. Agregá un apellido o apodo para distinguirlas.")
                 return
             }
             try Persistencia.guardar(en: modelContext) {
                 if let participanteAEditar {
                     participanteAEditar.nombre = nombreLimpio
-                    participanteAEditar.asignar(centavos: centavos)
+                    participanteAEditar.asignar(unidades: unidades)
                 } else {
                     let participante = Participante(nombre: nombreLimpio, evento: evento)
-                    participante.asignar(centavos: centavos)
+                    participante.asignar(unidades: unidades)
                     modelContext.insert(participante)
                 }
             }
@@ -202,7 +204,7 @@ struct AgregarParticipanteView: View {
         } catch let error as ErrorImporte {
             errorMensaje = error.localizedDescription
         } catch {
-            errorMensaje = "No se guardaron los cambios. Comprobá que haya espacio disponible y volvé a tocar Guardar."
+            errorMensaje = String(localized: "No se guardaron los cambios. Comprobá que haya espacio disponible y volvé a tocar Guardar.")
         }
     }
 }

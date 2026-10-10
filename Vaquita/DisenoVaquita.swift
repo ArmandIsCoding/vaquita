@@ -33,8 +33,8 @@ extension Color {
 /// Keep the persistent action to one line, even at accessibility text sizes.
 /// VoiceOver always receives the full action name.
 struct EtiquetaAccion: View {
-    let titulo: String
-    let compacto: String
+    let titulo: LocalizedStringKey
+    let compacto: LocalizedStringKey
     let simbolo: String
 
     var body: some View {
@@ -92,7 +92,7 @@ struct PieDeAccion<Content: View>: View {
 }
 
 struct EncabezadoSeccion: View {
-    let titulo: String
+    let titulo: LocalizedStringKey
     var detalle: String? = nil
     @Environment(\.dynamicTypeSize) private var tamanoTexto
 
@@ -223,11 +223,11 @@ struct IconoEvento: View {
 
     private var simbolo: String {
         let clave = CalculadoraVaquita.claveNombre(nombre)
-        if ["asado", "comida", "cena", "almuerzo", "pizza"].contains(where: clave.contains) { return "fork.knife" }
-        if ["viaje", "vacaciones", "escapada", "playa"].contains(where: clave.contains) { return "sun.max" }
-        if ["casa", "hogar", "depto"].contains(where: clave.contains) { return "house" }
-        if ["cumple", "fiesta", "festejo"].contains(where: clave.contains) { return "party.popper" }
-        if ["cafe", "merienda"].contains(where: clave.contains) { return "cup.and.saucer" }
+        if ["asado", "comida", "cena", "almuerzo", "pizza", "bbq", "dinner", "lunch", "churrasco", "jantar", "almoco"].contains(where: clave.contains) { return "fork.knife" }
+        if ["viaje", "vacaciones", "escapada", "playa", "trip", "getaway", "beach", "viagem", "ferias", "praia"].contains(where: clave.contains) { return "sun.max" }
+        if ["casa", "hogar", "depto", "home", "apartment"].contains(where: clave.contains) { return "house" }
+        if ["cumple", "fiesta", "festejo", "birthday", "party", "aniversario", "festa"].contains(where: clave.contains) { return "party.popper" }
+        if ["cafe", "merienda", "coffee", "lanche"].contains(where: clave.contains) { return "cup.and.saucer" }
         return "sparkles"
     }
 

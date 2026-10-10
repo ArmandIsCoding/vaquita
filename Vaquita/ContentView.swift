@@ -162,7 +162,7 @@ struct ContentView: View {
 
     private var portada: some View {
         VStack(alignment: .leading, spacing: 16) {
-            EtiquetaCapsula(texto: "CUENTAS CLARAS, BUENOS MOMENTOS", invertida: true)
+            EtiquetaCapsula(texto: String(localized: "CUENTAS CLARAS, BUENOS MOMENTOS"), invertida: true)
             ViewThatFits(in: .horizontal) {
                 HStack(spacing: 0) {
                     textoPortada
@@ -213,7 +213,7 @@ struct ContentView: View {
         .padding(.vertical, 16)
     }
 
-    private func paso(_ numero: String, titulo: String, detalle: String) -> some View {
+    private func paso(_ numero: String, titulo: LocalizedStringKey, detalle: LocalizedStringKey) -> some View {
         HStack(spacing: 14) {
             Text(numero).font(.system(.subheadline, design: .rounded, weight: .bold))
                 .foregroundStyle(EstiloVaquita.acento)
@@ -320,7 +320,7 @@ private struct EventoRow: View {
                     }
                 }
             }
-            Text(evento.participantes.isEmpty ? "Listo para sumar gente" : "\(evento.participantes.count) \(evento.participantes.count == 1 ? "persona" : "personas")")
+            Text(evento.participantes.isEmpty ? String(localized: "Listo para sumar gente") : String(localized: "\(evento.participantes.count) personas"))
                 .font(.caption).foregroundStyle(EstiloVaquita.secundario)
         }
     }
@@ -328,7 +328,7 @@ private struct EventoRow: View {
     private var total: some View {
         VStack(alignment: .trailing, spacing: 3) {
             if let liquidacion, !evento.participantes.isEmpty {
-                Text(Dinero.formato(liquidacion.total, moneda: evento.moneda))
+                Text(Dinero.formato(liquidacion.total, moneda: evento.moneda, decimales: evento.decimales))
                     .font(.system(.title3, design: .rounded, weight: .bold))
                     .foregroundStyle(EstiloVaquita.tinta)
                 Text("Total · \(evento.moneda)").font(.caption2).foregroundStyle(EstiloVaquita.secundario)
@@ -347,6 +347,7 @@ struct EditarEventoView: View {
     let evento: Evento?
     let onCreated: ((Evento) -> Void)?
     @State private var nombre: String
+    @State private var moneda: String
     @State private var errorGuardado = false
     @FocusState private var nombreEnfocado: Bool
 
@@ -354,6 +355,7 @@ struct EditarEventoView: View {
         self.evento = evento
         self.onCreated = onCreated
         _nombre = State(initialValue: evento?.nombre ?? "")
+        _moneda = State(initialValue: evento?.moneda ?? Moneda.predeterminada())
     }
 
     var body: some View {
@@ -362,7 +364,7 @@ struct EditarEventoView: View {
                 VStack(alignment: .leading, spacing: 28) {
                     VStack(alignment: .leading, spacing: 16) {
                         IconoEvento(nombre: nombre, grande: true)
-                        Text(evento == nil ? "¿Cuál es el plan?" : "Un nombre para\nese buen momento.")
+                        Text(evento == nil ? String(localized: "¿Cuál es el plan?") : String(localized: "Un nombre para\nese buen momento."))
                             .font(.system(.largeTitle, design: .rounded, weight: .bold))
                             .tracking(-1)
                         Text("Dale un nombre. Las cuentas van por nuestra parte.")
@@ -380,6 +382,31 @@ struct EditarEventoView: View {
                             .submitLabel(.done)
                             .onSubmit { if !nombreLimpio.isEmpty { guardar() } }
                             .padding(.vertical, 8)
+                    }
+                    .tarjetaVaquita()
+                    VStack(alignment: .leading, spacing: 12) {
+                        if evento == nil {
+                            NavigationLink {
+                                ElegirMonedaView(seleccion: $moneda)
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("MONEDA DEL EVENTO").font(.caption.weight(.bold))
+                                        Text(Moneda.nombre(moneda)).font(.headline)
+                                    }
+                                    Spacer()
+                                    Text(moneda).font(.subheadline.weight(.semibold))
+                                    Image(systemName: "chevron.right").font(.caption)
+                                }
+                            }
+                            .accessibilityIdentifier("elegirMoneda")
+                            Text("Elegida según tu región. Podés cambiarla para este plan.")
+                                .font(.footnote).foregroundStyle(EstiloVaquita.secundario)
+                        } else {
+                            Label("Moneda del evento: \(moneda)", systemImage: "banknote")
+                            Text("La moneda se conserva para mantener los aportes originales.")
+                                .font(.footnote).foregroundStyle(EstiloVaquita.secundario)
+                        }
                     }
                     .tarjetaVaquita()
                     if evento == nil {
@@ -408,7 +435,7 @@ struct EditarEventoView: View {
             } message: {
                 Text("No se guardaron los cambios. Comprobá el espacio disponible y volvé a tocar Guardar.")
             }
-            .navigationTitle(evento == nil ? "Nuevo evento" : "Editar evento")
+            .navigationTitle(evento == nil ? String(localized: "Nuevo evento") : String(localized: "Editar evento"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button("Cancelar") { dismiss() } }
@@ -420,8 +447,9 @@ struct EditarEventoView: View {
         .tint(EstiloVaquita.acento)
     }
 
-    private func sugerencia(_ texto: String, simbolo: String) -> some View {
-        Button { nombre = texto; nombreEnfocado = true } label: {
+    private func sugerencia(_ recurso: LocalizedStringResource, simbolo: String) -> some View {
+        let texto = String(localized: recurso)
+        return Button { nombre = texto; nombreEnfocado = true } label: {
             Label(texto, systemImage: simbolo)
                 .font(.subheadline.weight(.medium))
                 .frame(maxWidth: .infinity, minHeight: 48)
@@ -439,7 +467,7 @@ struct EditarEventoView: View {
             var eventoCreado: Evento?
             try Persistencia.guardar(en: modelContext) {
                 if let evento { evento.nombre = nombreLimpio } else {
-                    let nuevoEvento = Evento(nombre: nombreLimpio)
+                    let nuevoEvento = Evento(nombre: nombreLimpio, moneda: moneda)
                     modelContext.insert(nuevoEvento)
                     eventoCreado = nuevoEvento
                 }

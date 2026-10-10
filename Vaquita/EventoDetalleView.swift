@@ -32,8 +32,8 @@ struct EventoDetalleView: View {
                 estadoVacio.filaVaquita()
             } else {
                 if let liquidacion {
-                    ResumenEventoView(liquidacion: liquidacion, moneda: evento.moneda).filaVaquita()
-                    EncabezadoSeccion(titulo: "¿Cómo se paga?", detalle: liquidacion.transacciones.isEmpty ? nil : "\(liquidacion.transacciones.count) \(liquidacion.transacciones.count == 1 ? "transferencia" : "transferencias")")
+                    ResumenEventoView(liquidacion: liquidacion, moneda: evento.moneda, decimales: evento.decimales).filaVaquita()
+                    EncabezadoSeccion(titulo: "¿Cómo se paga?", detalle: liquidacion.transacciones.isEmpty ? nil : String(localized: "\(liquidacion.transacciones.count) transferencias"))
                         .filaVaquita()
                     if liquidacion.transacciones.isEmpty {
                         HStack(alignment: .top, spacing: 14) {
@@ -51,7 +51,7 @@ struct EventoDetalleView: View {
                         .filaVaquita()
                     } else {
                         ForEach(Array(liquidacion.transacciones.enumerated()), id: \.element.id) { indice, transaccion in
-                            TransferenciaRow(transaccion: transaccion, moneda: evento.moneda, numero: indice + 1)
+                            TransferenciaRow(transaccion: transaccion, moneda: evento.moneda, decimales: evento.decimales, numero: indice + 1)
                                 .filaVaquita()
                         }
                         Text("Con estas transferencias, las cuentas quedan parejas.")
@@ -64,12 +64,12 @@ struct EventoDetalleView: View {
                         .tarjetaVaquita().filaVaquita()
                 }
 
-                EncabezadoSeccion(titulo: "La vaquita", detalle: "\(participantes.count) \(participantes.count == 1 ? "persona" : "personas")")
+                EncabezadoSeccion(titulo: "La vaquita", detalle: String(localized: "\(participantes.count) personas"))
                     .filaVaquita()
                 ForEach(Array(participantes.enumerated()), id: \.element.persistentModelID) { indice, participante in
                     let cuota = liquidacion?.cuotas.first { $0.id == participante.persistentModelID }
                     Button { hojaParticipante = .editar(participante) } label: {
-                        ParticipanteRow(participante: participante, cuota: cuota, moneda: evento.moneda, indice: indice)
+                        ParticipanteRow(participante: participante, cuota: cuota, moneda: evento.moneda, decimales: evento.decimales, indice: indice)
                     }
                     .buttonStyle(BotonTarjeta())
                     .accessibilityIdentifier("participante-\(participante.nombre)")
@@ -87,7 +87,7 @@ struct EventoDetalleView: View {
                 }
                 VStack(alignment: .leading, spacing: 8) {
                     Label("Tocá una persona para editar su aporte.", systemImage: "hand.tap")
-                    Text("Los centavos sobrantes se distribuyen en el orden de la lista. Cada persona tiene su importe exacto indicado arriba.")
+                    Text("El resto se distribuye en la unidad mínima del evento y en el orden de la lista. Cada persona tiene su importe exacto indicado arriba.")
                 }
                 .font(.footnote).foregroundStyle(EstiloVaquita.secundario)
                 .padding(.vertical, 10)
@@ -189,6 +189,7 @@ private enum HojaParticipante: Identifiable {
 private struct ResumenEventoView: View {
     let liquidacion: LiquidacionEvento
     let moneda: String
+    let decimales: Int
     @Environment(\.horizontalSizeClass) private var ancho
     @Environment(\.dynamicTypeSize) private var tamanoTexto
 
@@ -221,13 +222,13 @@ private struct ResumenEventoView: View {
     }
 
     private var total: some View {
-        Text(Dinero.formato(liquidacion.total, moneda: moneda))
+        Text(Dinero.formato(liquidacion.total, moneda: moneda, decimales: decimales))
             .font(.system(.largeTitle, design: .rounded, weight: .bold))
             .tracking(-1.4)
             .foregroundStyle(.white)
             .contentTransition(.numericText())
             .fixedSize(horizontal: false, vertical: true)
-            .accessibilityLabel("Total gastado, \(Dinero.formato(liquidacion.total, moneda: moneda))")
+            .accessibilityLabel("Total gastado, \(Dinero.formato(liquidacion.total, moneda: moneda, decimales: decimales))")
     }
 
     private var porPersona: some View {
@@ -237,7 +238,7 @@ private struct ResumenEventoView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.vertical, 2)
                 .foregroundStyle(Color(hex: 0xD2E0CF))
-            Text(liquidacion.reparto(moneda: moneda))
+            Text(liquidacion.reparto(moneda: moneda, decimales: decimales))
                 .font(.system(.title3, design: .rounded, weight: .bold))
                 .foregroundStyle(EstiloVaquita.lima)
                 .fixedSize(horizontal: false, vertical: true)
@@ -249,6 +250,7 @@ private struct ResumenEventoView: View {
 private struct TransferenciaRow: View {
     let transaccion: Transaccion
     let moneda: String
+    let decimales: Int
     let numero: Int
 
     var body: some View {
@@ -264,7 +266,7 @@ private struct TransferenciaRow: View {
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(EstiloVaquita.tinta)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(Dinero.formato(transaccion.centavos, moneda: moneda))
+                Text(Dinero.formato(transaccion.unidades, moneda: moneda, decimales: decimales))
                     .font(.system(.title2, design: .rounded, weight: .bold))
                     .foregroundStyle(EstiloVaquita.acento)
                     .fixedSize(horizontal: false, vertical: true)
@@ -284,6 +286,7 @@ private struct ParticipanteRow: View {
     let participante: Participante
     let cuota: CuotaParticipante?
     let moneda: String
+    let decimales: Int
     let indice: Int
     @Environment(\.dynamicTypeSize) private var tamanoTexto
 
@@ -298,7 +301,7 @@ private struct ParticipanteRow: View {
                 Image(systemName: "pencil").font(.caption).foregroundStyle(EstiloVaquita.secundario)
                     .accessibilityHidden(true)
             }
-            if let importe = try? participante.centavosValidados() {
+            if let importe = try? participante.unidadesValidadas() {
                 if tamanoTexto.isAccessibilitySize {
                     VStack(alignment: .leading, spacing: 10) { importes(importe) }
                 } else {
@@ -306,7 +309,9 @@ private struct ParticipanteRow: View {
                 }
                 if let cuota {
                     let balance = cuota.aportado - cuota.cuota
-                    Label(balance == 0 ? "Su aporte está al día" : "\(balance > 0 ? "Recibe" : "Paga") \(Dinero.formato(abs(balance), moneda: moneda))",
+                    Label(balance == 0 ? String(localized: "Su aporte está al día") : balance > 0
+                          ? String(localized: "Recibe \(Dinero.formato(balance, moneda: moneda, decimales: decimales))")
+                          : String(localized: "Paga \(Dinero.formato(-balance, moneda: moneda, decimales: decimales))"),
                           systemImage: balance == 0 ? "checkmark.circle.fill" : balance > 0 ? "arrow.down.left" : "arrow.up.right")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(balance < 0 ? EstiloVaquita.aviso : EstiloVaquita.acento)
@@ -325,13 +330,13 @@ private struct ParticipanteRow: View {
     @ViewBuilder private func importes(_ importe: Int64) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Aportó").font(.caption).foregroundStyle(EstiloVaquita.secundario)
-            Text(Dinero.formato(importe, moneda: moneda)).font(.subheadline.weight(.semibold)).foregroundStyle(EstiloVaquita.tinta)
+            Text(Dinero.formato(importe, moneda: moneda, decimales: decimales)).font(.subheadline.weight(.semibold)).foregroundStyle(EstiloVaquita.tinta)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         if let cuota {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Le corresponde").font(.caption).foregroundStyle(EstiloVaquita.secundario)
-                Text(Dinero.formato(cuota.cuota, moneda: moneda)).font(.subheadline.weight(.semibold)).foregroundStyle(EstiloVaquita.tinta)
+                Text(Dinero.formato(cuota.cuota, moneda: moneda, decimales: decimales)).font(.subheadline.weight(.semibold)).foregroundStyle(EstiloVaquita.tinta)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

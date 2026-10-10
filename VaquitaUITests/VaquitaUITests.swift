@@ -25,9 +25,9 @@ final class VaquitaUITests: XCTestCase {
         captura.lifetime = .keepAlways
         add(captura)
     }
-    private func iniciar(textoGrande: Bool = false) -> XCUIApplication {
+    private func iniciar(textoGrande: Bool = false, idioma: String = "es", region: String = "es_AR") -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments += ["-AppleLanguages", "(es)", "-AppleLocale", "es_AR"]
+        app.launchArguments += ["-AppleLanguages", "(\(idioma))", "-AppleLocale", region]
         if textoGrande {
             app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         }
@@ -247,6 +247,95 @@ final class VaquitaUITests: XCTestCase {
         try app.performAccessibilityAudit(for: [.textClipped, .sufficientElementDescription, .hitRegion])
         let captura = XCTAttachment(screenshot: app.screenshot())
         captura.name = "Texto-grande"; captura.lifetime = .keepAlways; add(captura)
+    }
+
+    func testInglesConDolares() throws {
+        try comprobarIdioma(idioma: "en", region: "en_US", moneda: "USD", guardar: "Save", cancelar: "Cancel",
+                            importe: "12.50", pago: "Bruno pays Ana", ayuda: "Help & privacy", politica: "Privacy policy")
+    }
+
+    func testPortuguesConReales() throws {
+        try comprobarIdioma(idioma: "pt", region: "pt_BR", moneda: "BRL", guardar: "Salvar", cancelar: "Cancelar",
+                            importe: "12,50", pago: "Bruno paga a Ana", ayuda: "Ajuda e privacidade", politica: "Política de privacidade")
+    }
+
+    private func comprobarIdioma(idioma: String, region: String, moneda: String, guardar: String,
+                                 cancelar: String, importe: String, pago: String, ayuda: String, politica: String) throws {
+        let app = iniciar(idioma: idioma, region: region)
+        let nombre = "Locale \(region) \(Int(Date().timeIntervalSince1970))"
+        app.buttons["Nuevo evento"].tap()
+        XCTAssertTrue(app.buttons["elegirMoneda"].label.contains(moneda))
+        capturar("Evento-\(region)", app: app)
+        app.textFields["nombreEvento"].tap()
+        app.textFields["nombreEvento"].typeText(nombre)
+        app.buttons[guardar].tap()
+        agregar(app, nombre: "Ana", importe: importe)
+        agregar(app, nombre: "Bruno", importe: "0")
+        XCTAssertTrue(app.staticTexts[pago].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts[moneda].exists)
+        try app.performAccessibilityAudit(for: [.contrast, .textClipped, .hitRegion, .sufficientElementDescription])
+        capturar("Reparto-\(region)", app: app)
+        mostrar(app.buttons["participante-Ana"], en: app)
+        app.buttons["participante-Ana"].tap()
+        XCTAssertEqual(app.textFields["importe"].value as? String, importe)
+        app.buttons[cancelar].tap()
+        app.terminate()
+        // Language and region can change independently of saved event currency.
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launch()
+        let fila = app.buttons["evento-\(nombre)"]
+        mostrar(fila, en: app)
+        fila.tap()
+        XCTAssertTrue(app.staticTexts[moneda].waitForExistence(timeout: 5))
+        app.terminate()
+        app.launchArguments = ["-AppleLanguages", "(\(idioma))", "-AppleLocale", region]
+        app.launch()
+        app.buttons[ayuda].tap()
+        mostrar(app.buttons[politica], en: app)
+        app.buttons[politica].tap()
+        XCTAssertTrue(app.staticTexts[politica].waitForExistence(timeout: 5))
+        capturar("Privacidad-\(region)", app: app)
+    }
+
+    func testElegirMonedaConCeroYTresDecimales() throws {
+        let app = iniciar(idioma: "en", region: "en_US")
+        for (codigo, entrada, editable) in [("JPY", "1001", "1001"), ("KWD", "12.345", "12.345")] {
+            app.buttons["Nuevo evento"].tap()
+            let selector = app.buttons["elegirMoneda"]
+            mostrar(selector, en: app)
+            selector.tap()
+            let busqueda = app.searchFields.firstMatch
+            XCTAssertTrue(busqueda.waitForExistence(timeout: 5))
+            busqueda.tap(); busqueda.typeText(codigo)
+            app.buttons["moneda-\(codigo)"].tap()
+            app.textFields["nombreEvento"].tap()
+            app.textFields["nombreEvento"].typeText("Currency \(codigo)")
+            app.buttons["Save"].tap()
+            agregar(app, nombre: "Ana", importe: entrada)
+            agregar(app, nombre: "Bruno", importe: "0")
+            XCTAssertTrue(app.staticTexts["Bruno pays Ana"].waitForExistence(timeout: 5))
+            capturar("Reparto-\(codigo)", app: app)
+            mostrar(app.buttons["participante-Ana"], en: app)
+            app.buttons["participante-Ana"].tap()
+            XCTAssertEqual(app.textFields["importe"].value as? String, editable)
+            app.buttons["Cancel"].tap()
+            app.navigationBars.buttons.element(boundBy: 0).tap()
+        }
+    }
+
+    func testPortuguesConTextoGrande() throws {
+        capturarEntrada = true
+        let app = iniciar(textoGrande: true, idioma: "pt", region: "pt_BR")
+        app.buttons["Nuevo evento"].tap()
+        app.textFields["nombreEvento"].tap()
+        app.textFields["nombreEvento"].typeText("Churrasco com amigos")
+        app.buttons["Salvar"].tap()
+        agregar(app, nombre: "Ana", importe: "100,01")
+        agregar(app, nombre: "Bruno", importe: "0")
+        mostrar(app.staticTexts["Bruno paga a Ana"], en: app)
+        XCTAssertTrue(app.staticTexts["Bruno paga a Ana"].isHittable)
+        try app.performAccessibilityAudit(for: [.textClipped, .hitRegion, .sufficientElementDescription])
+        capturar("Portugues-texto-grande", app: app)
     }
 
 }

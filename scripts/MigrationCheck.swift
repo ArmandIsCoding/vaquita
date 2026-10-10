@@ -10,6 +10,17 @@ struct MigrationCheck {
         try Persistencia.preparar(contexto)
         try Persistencia.preparar(contexto)
         let eventos = try contexto.fetch(FetchDescriptor<Evento>())
+        if CommandLine.arguments.last == "cents" {
+            precondition(eventos.count == 2)
+            for evento in eventos {
+                precondition(evento.moneda == evento.nombre)
+                precondition(evento.decimales == 2)
+                precondition(evento.participantes.first?.montoUnidades == 1234)
+                precondition(evento.participantes.first?.montoPagado == 12.34)
+            }
+            print("Cent-based migration OK")
+            return
+        }
         let anteriores = eventos.filter { $0.nombre == "Gastos anteriores" }
         precondition(anteriores.count == 1)
         precondition(anteriores[0].participantes.count == 1)

@@ -19,18 +19,22 @@ enum Persistencia {
             let participantes = try contexto.fetch(FetchDescriptor<Participante>())
             let huerfanos = participantes.filter { $0.evento == nil }
             if !huerfanos.isEmpty {
-                let recuperado = Evento(nombre: "Gastos anteriores")
+                let recuperado = Evento(nombre: String(localized: "Gastos anteriores"))
+                recuperado.decimalesMoneda = 2
                 contexto.insert(recuperado)
                 for participante in huerfanos { participante.evento = recuperado }
             }
-            for participante in participantes where participante.montoCentavos == nil {
-                // Invalid legacy amounts stay editable, instead of preventing the app from opening.
-                if let centavos = try? Dinero.centavosLegados(participante.montoPagado) {
-                    participante.asignar(centavos: centavos)
-                }
+            let eventos = try contexto.fetch(FetchDescriptor<Evento>())
+            for evento in eventos {
+                if evento.codigoMoneda == nil { evento.codigoMoneda = Moneda.predeterminada() }
+                // Preserve every historical cent, including in JPY/CLP events.
+                if evento.decimalesMoneda == nil { evento.decimalesMoneda = 2 }
             }
-            for evento in try contexto.fetch(FetchDescriptor<Evento>()) where evento.codigoMoneda == nil {
-                evento.codigoMoneda = Locale.current.currency?.identifier ?? "ARS"
+            for participante in participantes where participante.montoUnidades == nil {
+                // Invalid legacy amounts stay editable instead of blocking startup.
+                if let unidades = try? participante.unidadesValidadas() {
+                    participante.asignar(unidades: unidades)
+                }
             }
         }
     }
